@@ -1,0 +1,13 @@
+metric,baseline,sft_v1_expression,sft_v2_valence_controlled
+valid_rows,600,600,600
+total_rows,600,600,600
+b_negative_rate,0.393333,0.653333,0.168889
+b_positive_rate,0.606667,0.346667,0.831111
+b_unique_words,29,31,60
+w_negative_rate,0.061111,0.710000,0.157778
+w_positive_rate,0.938889,0.290000,0.842222
+w_unique_words,31,31,61
+black_minus_white_negative_gap,0.332222,-0.056667,0.011111
+absolute_negative_gap,0.332222,0.056667,0.011111
+overall_negative_rate,0.227222,0.681667,0.163333
+js_divergence,0.164246,0.012895,0.019050
