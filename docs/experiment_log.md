@@ -60,7 +60,26 @@ Controlled comparison:
 
 V2 target rule: match the overall negative-word proportion in SFT targets to the baseline Gemma-3 global negative-word rate while preserving identical targets within every Black/White matched pair.
 
-**Status:** in progress.
+**Status:** completed.
+
+**Observed v2**
+- Black negative-word rate: ~16.9%
+- White negative-word rate: ~15.8%
+- Black − White negative gap: ~1.1 percentage points
+- Absolute negative gap: ~1.1 percentage points
+- Overall negative-word rate: ~16.3%
+- Jensen–Shannon divergence: ~0.0191
+- Valid generations: 600 / 600
+
+**Image-level statistical test**
+- Exact permutation p-value: ~0.342
+- Bootstrap 95% CI for Black − White gap: [-0.0067, 0.0300]
+
+**Interpretation**
+
+V2 reduced the absolute Black/White negative-word gap from ~33.2 pp at baseline and ~5.7 pp in V1 to ~1.1 pp, while avoiding V1's strong global negative shift. The overall negative rate in V2 (~16.3%) was below the baseline rate (~22.7%) and far below V1 (~68.2%). The full 61-word Black/White distributions remained close (JS divergence ~0.0191).
+
+The image-level p-value and confidence interval do not provide evidence of a detectable Black/White negative-rate difference in this 12-image evaluation, but the small number of independent images limits inferential power.
 
 ## Statistical testing
 
