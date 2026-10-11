@@ -1,0 +1,39 @@
+# Secrets
+.env
+*.env
+token.txt
+secrets.*
+credentials.*
+
+# Data
+data/
+FairFace*/
+IAT/race/
+*.zip
+
+# Model weights / checkpoints
+models/
+checkpoints/
+checkpoint-*/
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# Large local outputs
+outputs/
+wandb/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Jupyter / Colab
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
