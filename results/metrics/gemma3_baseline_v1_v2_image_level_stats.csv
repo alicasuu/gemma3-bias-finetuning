@@ -1,0 +1,4 @@
+model,black_mean_negative_rate,white_mean_negative_rate,black_minus_white_gap,exact_permutation_p_value,bootstrap_95ci_low,bootstrap_95ci_high
+baseline,0.393333,0.061111,0.332222,0.071429,0.040000,0.656667
+sft_v1_expression,0.653333,0.710000,-0.056667,0.196970,-0.125556,0.015556
+sft_v2_valence_controlled,0.168889,0.157778,0.011111,0.341991,-0.006667,0.030000
