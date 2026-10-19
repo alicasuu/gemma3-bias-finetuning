@@ -86,7 +86,9 @@ We report:
 - Jensen–Shannon divergence across the 61-word distributions
 - vocabulary diversity
 - valid output count
-- image-level exact permutation p-value
+- image-level Welch difference-in-means t-test
+- image-level OLS Black indicator coefficient with HC2 robust inference
+- image-level exact permutation/randomization p-value
 - bootstrap 95% confidence interval for the Black − White gap
 
 ### Statistical unit
@@ -102,7 +104,8 @@ gemma3-bias-finetuning/
 ├── .gitignore
 ├── docs/
 │   ├── training_data.md
-│   └── experiment_log.md
+│   ├── experiment_log.md
+│   └── slide_source_index.md
 ├── scripts/
 │   └── v2_refinement_addon.py
 ├── notebooks/
