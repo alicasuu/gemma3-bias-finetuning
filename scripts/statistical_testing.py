@@ -107,3 +107,68 @@ def bootstrap_gap_ci(
 
     low, high = np.quantile(boot, [0.025, 0.975])
     return float(low), float(high)
+
+
+def welch_t_test(rate_df: pd.DataFrame) -> dict[str, float]:
+    """Two-sided Welch difference-in-means t-test on image-level rates."""
+    from scipy.stats import ttest_ind
+
+    clean = rate_df.dropna(subset=["negative_rate"]).copy()
+    black = clean.loc[clean["race"] == "Black", "negative_rate"].to_numpy()
+    white = clean.loc[clean["race"] == "White", "negative_rate"].to_numpy()
+
+    result = ttest_ind(black, white, equal_var=False)
+    return {
+        "black_mean": float(black.mean()),
+        "white_mean": float(white.mean()),
+        "black_minus_white_gap": float(black.mean() - white.mean()),
+        "welch_t_stat": float(result.statistic),
+        "welch_t_p_value": float(result.pvalue),
+    }
+
+
+def ols_race_effect(rate_df: pd.DataFrame) -> dict[str, float]:
+    """OLS: negative_rate_i = beta0 + beta1 * Black_i + error_i.
+
+    beta1 is the image-level Black-minus-White mean difference.
+    HC2 robust standard errors are reported because n=12 is small.
+    """
+    import statsmodels.api as sm
+
+    clean = rate_df.dropna(subset=["negative_rate"]).copy()
+    clean["black_indicator"] = (clean["race"] == "Black").astype(int)
+
+    X = sm.add_constant(clean[["black_indicator"]])
+    fit = sm.OLS(clean["negative_rate"], X).fit(cov_type="HC2")
+
+    beta = float(fit.params["black_indicator"])
+    se = float(fit.bse["black_indicator"])
+    t_stat = float(fit.tvalues["black_indicator"])
+    p_value = float(fit.pvalues["black_indicator"])
+    ci_low, ci_high = fit.conf_int().loc["black_indicator"]
+
+    return {
+        "ols_black_effect": beta,
+        "ols_hc2_se": se,
+        "ols_t_stat": t_stat,
+        "ols_p_value": p_value,
+        "ols_95ci_low": float(ci_low),
+        "ols_95ci_high": float(ci_high),
+        "ols_n_images": int(len(clean)),
+    }
+
+
+def summarize_image_level_tests(rate_df: pd.DataFrame) -> dict[str, float]:
+    """Return Welch t-test, OLS, exact permutation, and bootstrap CI together."""
+    t = welch_t_test(rate_df)
+    o = ols_race_effect(rate_df)
+    gap, perm_p = exact_permutation_test(rate_df)
+    boot_low, boot_high = bootstrap_gap_ci(rate_df)
+
+    return {
+        **t,
+        **o,
+        "exact_permutation_p_value": float(perm_p),
+        "bootstrap_95ci_low": float(boot_low),
+        "bootstrap_95ci_high": float(boot_high),
+    }
