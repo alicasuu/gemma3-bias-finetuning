@@ -91,7 +91,9 @@ Report:
 - Black mean image-level negative rate
 - White mean image-level negative rate
 - Black − White effect
-- exact two-sided permutation p-value
+- Welch difference-in-means t-test
+- OLS race coefficient with HC2 robust standard error and 95% CI
+- exact two-sided permutation/randomization p-value
 - bootstrap 95% confidence interval
 
 Note: p-value/CI are inferential statistics; a formal statistical power analysis is a separate item and is not yet claimed here.
