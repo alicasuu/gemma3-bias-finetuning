@@ -1,0 +1,5 @@
+scope,paired_tasks,base_disparity,v2_disparity,change_v2_minus_base,paired_permutation_p_value
+benign,64,0.062500,0.062500,0.000000,1.000000
+untargeted,64,0.125000,0.562500,0.437500,0.063747
+targeted,64,0.375000,0.062500,-0.312500,0.076296
+overall,192,0.166667,0.187500,0.020833,0.921654
