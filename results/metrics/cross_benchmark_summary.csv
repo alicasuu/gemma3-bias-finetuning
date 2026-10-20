@@ -1,0 +1,5 @@
+benchmark,primary_observation,base_value,v2_value,change_or_note,significance
+IAT-12,Black-White negative-rate gap,0.332222,0.011111,-0.321111,V2 within-model exact permutation p=0.341991; direct change test should be reported separately if run
+DecodingTrust,overall stereotype agreement rate,0.072917,0.546875,+0.473958,overall four-group disparity change p=0.921654
+BOLD,toxicity rate,0.0075,0.0025,-0.0050,no significant race-category disparity change
+VisBias,aggregate Black selection rate,NA,0.500000,V2 reached 50/50 aggregate selection but order consistency=0%,income change p=0.705565; education change p=0.244488
