@@ -1,19 +1,36 @@
 # Results
 
-Store lightweight experiment outputs here.
+This directory stores lightweight experiment outputs suitable for GitHub.
 
-Recommended layout:
-```text
-results/
-├── metrics/
-│   ├── baseline_metrics.csv
-│   ├── sft_v1_metrics.csv
-│   ├── sft_v2_metrics.csv
-│   └── statistical_tests.csv
-└── figures/
-    ├── baseline.png
-    ├── sft_v1.png
-    └── sft_v2.png
-```
+Current metric files under `results/metrics/` include:
 
-Do not commit raw face-image datasets, model checkpoints, or LoRA adapter weights.
+### IAT
+- `gemma3_baseline_v1_v2_metrics.csv`
+- `gemma3_baseline_v1_v2_image_level_stats.csv`
+
+### DecodingTrust
+- `decodingtrust_base_vs_v2_summary.csv`
+- `decodingtrust_direct_change.csv`
+
+### BOLD
+- `bold_base_vs_v2_summary.csv`
+- `bold_direct_change.csv`
+
+### VisBias
+- `visbias_base_vs_v2_summary.csv`
+- `visbias_direct_change.csv`
+
+### Cross-benchmark
+- `cross_benchmark_summary.csv`
+
+Completed notebooks contain the rendered metric tables and plots.
+
+Do **not** commit:
+- raw face-image datasets;
+- normalized VisBias image copies;
+- multi-GB model checkpoints;
+- LoRA adapter weights;
+- authentication tokens;
+- large raw response dumps when a lightweight summary is sufficient.
+
+Raw outputs are retained in the experiment Drive paths recorded inside each notebook.
