@@ -1,6 +1,6 @@
 # Notebook workflow
 
-Completed experiment notebooks:
+Runnable experiment notebooks:
 
 1. `01_gemma3_baseline.ipynb` — held-out IAT-12 baseline evaluation.
 2. `02_gemma3_sft_v1_expression.ipynb` — FairFace SFT + LoRA with expression-derived targets.
@@ -17,4 +17,4 @@ The exact combined completed original training run is preserved under:
 archive/gemma3_sft_v1_v2_full_completed_run.ipynb
 ```
 
-Public notebooks intentionally omit raw FairFace/IAT/VisBias image datasets, authentication tokens, checkpoints, and model weights. Completed notebook outputs and lightweight metric tables are preserved where practical.
+Public notebooks intentionally omit raw FairFace/IAT/VisBias image datasets, authentication tokens, checkpoints, and model weights. Lightweight metric tables are committed under `results/metrics/`; large raw outputs remain in the experiment Drive paths recorded by the notebooks.
