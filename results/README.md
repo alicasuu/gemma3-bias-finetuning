@@ -23,7 +23,7 @@ Current metric files under `results/metrics/` include:
 ### Cross-benchmark
 - `cross_benchmark_summary.csv`
 
-Completed notebooks contain the rendered metric tables and plots.
+The notebooks contain the full evaluation code; lightweight summary metrics are committed here, while large raw outputs and generated figures remain in the experiment Drive paths recorded by each notebook.
 
 Do **not** commit:
 - raw face-image datasets;
