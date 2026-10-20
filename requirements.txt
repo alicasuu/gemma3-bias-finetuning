@@ -4,9 +4,14 @@ datasets
 accelerate
 bitsandbytes
 huggingface_hub
-pillow
+pillow==12.3.0
 scipy
+statsmodels
 pandas
 numpy
 matplotlib
+pyarrow
+detoxify
+vaderSentiment
+tqdm
 torch
