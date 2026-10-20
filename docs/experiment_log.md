@@ -43,7 +43,7 @@ Observed v1:
 - Black − White negative gap: ~-5.7 percentage points
 - Jensen–Shannon divergence: ~0.0129
 
-Interpretation: V1 made Black and White distributions much more similar, but caused a strong global shift toward negative words. More race-consistent does not necessarily mean more neutral.
+Interpretation: V1 made Black and White distributions much more similar, but caused a strong global shift toward negative words.
 
 ## SFT v2 — Valence-Controlled Targets
 
@@ -60,40 +60,114 @@ Controlled comparison:
 
 V2 target rule: match the overall negative-word proportion in SFT targets to the baseline Gemma-3 global negative-word rate while preserving identical targets within every Black/White matched pair.
 
-**Status:** completed.
-
-**Observed v2**
+Observed v2:
 - Black negative-word rate: ~16.9%
 - White negative-word rate: ~15.8%
 - Black − White negative gap: ~1.1 percentage points
-- Absolute negative gap: ~1.1 percentage points
-- Overall negative-word rate: ~16.3%
+- overall negative-word rate: ~16.3%
 - Jensen–Shannon divergence: ~0.0191
-- Valid generations: 600 / 600
+- valid generations: 600 / 600
 
-**Image-level statistical test**
-- Exact permutation p-value: ~0.342
-- Bootstrap 95% CI for Black − White gap: [-0.0067, 0.0300]
+Image-level inference:
+- OLS HC2 p-value: ~0.283
+- exact permutation p-value: ~0.342
+- bootstrap 95% CI for Black − White gap: [-0.0067, 0.0300]
 
-**Interpretation**
+Interpretation: V2 reduced the descriptive Black/White IAT gap while avoiding V1's global negative shift. The 12-image sample remains small, so inferential power is limited.
 
-V2 reduced the absolute Black/White negative-word gap from ~33.2 pp at baseline and ~5.7 pp in V1 to ~1.1 pp, while avoiding V1's strong global negative shift. The overall negative rate in V2 (~16.3%) was below the baseline rate (~22.7%) and far below V1 (~68.2%). The full 61-word Black/White distributions remained close (JS divergence ~0.0191).
+## External validation — DecodingTrust
 
-The image-level p-value and confidence interval do not provide evidence of a detectable Black/White negative-rate difference in this 12-image evaluation, but the small number of independent images limits inferential power.
+Notebook: `notebooks/04_gemma3_decodingtrust_base_vs_v2.ipynb`
+
+Race-focused evaluation:
+- 192 prompts/model
+- four demographic groups
+- benign, untargeted, targeted regimes
+
+Observed overall:
+- Base stereotype agreement: 0.072917
+- V2 stereotype agreement: 0.546875
+- Base no-response rate: 0.619792
+- V2 no-response rate: 0.125000
+
+Overall four-group disparity:
+- Base: 0.166667
+- V2: 0.187500
+- change: +0.020833
+- paired permutation p = 0.921654
+
+Black vs White:
+- Base gap: -0.083333, Welch p = 0.044261
+- V2 gap: -0.187500, Welch p = 0.065847
+- OLS tuning interaction: -0.104167, p = 0.119915
+
+Interpretation: the IAT improvement did not generalize. V2 agreed with stereotype statements much more often, while the overall race-group disparity change was not statistically detectable.
+
+## External validation — BOLD
+
+Notebook: `notebooks/05_gemma3_bold_base_vs_v2.ipynb`
+
+Balanced race-focused sample:
+- 100 prompts/category
+- 4 categories
+- 400 prompts/model
+
+Overall:
+- toxicity: 0.0075 Base -> 0.0025 V2
+- mean sentiment: 0.1675 Base -> 0.2250 V2
+- mean regard: 0.3775 Base -> 0.4275 V2
+
+Direct race-category disparity changes:
+- toxicity: 0.00, p = 1.000000
+- sentiment: +0.08, p = 0.307835
+- regard: -0.09, p = 0.329534
+
+Interpretation: BOLD is mixed/mostly neutral; no statistically detectable Base-to-V2 race-category disparity change was observed.
+
+## External validation — VisBias
+
+Notebook: `notebooks/06_gemma3_visbias_base_vs_v2.ipynb`
+
+Strict matched-pair contract:
+- same occupation
+- same gender
+- same source index
+- Black/White pair
+
+The available source repository yielded 140 strict matched pairs.
+Each pair was tested on income and education with reversed image order, producing 560 comparison calls/model.
+
+Observed V2:
+- Black selection = 0.50 for income and education
+- White selection = 0.50 for income and education
+- cannot-determine = 0 for both
+- order consistency = 0 for both
+
+Direct disparity change:
+- income: -0.023529, p = 0.705565
+- education: -0.090909, p = 0.244488
+
+OLS tuned coefficient:
+- income: +0.055020, p = 0.204538
+- education: +0.111039, p = 0.054063
+
+Interpretation: aggregate selection looked balanced, but zero order consistency indicates severe position sensitivity. This is not robust evidence of debiasing.
+
+## Cross-benchmark conclusion
+
+V2 strongly improves the original IAT metric, but the effect does not generalize consistently:
+- DecodingTrust shows a large increase in stereotype agreement.
+- BOLD shows no statistically detectable race-category disparity change.
+- VisBias aggregate balance is undermined by 0% order consistency.
+
+The current evidence supports benchmark-dependent improvements with behavioral trade-offs rather than universal debiasing.
 
 ## Statistical testing
 
-Do not treat all 600 generations as independent samples.
+Do not treat repeated generations as independent when the underlying stimulus is shared.
 
-Primary unit of analysis: **image**.
-
-Report:
-- Black mean image-level negative rate
-- White mean image-level negative rate
-- Black − White effect
-- Welch difference-in-means t-test
-- OLS race coefficient with HC2 robust standard error and 95% CI
-- exact two-sided permutation/randomization p-value
-- bootstrap 95% confidence interval
-
-Note: p-value/CI are inferential statistics; a formal statistical power analysis is a separate item and is not yet claimed here.
+Primary principles:
+- preserve matched observations;
+- report effect sizes and raw p-values;
+- test the Base-to-V2 change directly when possible;
+- report refusals, invalid outputs, and behavioral stability alongside bias metrics.
