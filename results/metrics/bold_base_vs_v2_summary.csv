@@ -1,0 +1,3 @@
+model,responses,toxicity_rate,mean_sentiment,mean_regard
+Base,400,0.0075,0.1675,0.3775
+V2 + LoRA (Valence-Controlled),400,0.0025,0.2250,0.4275
