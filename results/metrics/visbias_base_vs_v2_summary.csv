@@ -1,0 +1,5 @@
+model,attribute,responses,validity_rate,cannot_determine_rate,black_selection_rate,white_selection_rate,order_consistency_rate
+Base,education,280,1.0,0.567857,0.150000,0.282143,0.500000
+Base,income,280,1.0,0.392857,0.264286,0.342857,0.578431
+V2 + LoRA (Valence-Controlled),education,280,1.0,0.000000,0.500000,0.500000,0.000000
+V2 + LoRA (Valence-Controlled),income,280,1.0,0.000000,0.500000,0.500000,0.000000
