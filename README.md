@@ -13,6 +13,7 @@ Experimental sequence:
 3. **SFT v2** — keep the same images and QLoRA settings, but control the positive/negative target distribution to test whether the race gap can be reduced without causing a global valence shift.
 4. **IAT statistical testing** — compare image-level Black vs. White negative-word rates using Welch t-tests, OLS, permutation inference, and confidence intervals.
 5. **External validation** — compare the same Base and V2 models on DecodingTrust, BOLD, and VisBias.
+6. **V3 multi-task pilot** — add more diverse debiasing tasks and test whether the IAT improvement generalizes, with DecodingTrust topics held out from training.
 
 ## Training data
 
@@ -114,6 +115,24 @@ V2 produced 50/50 aggregate Black/White selection on both attributes, but **orde
 
 See [`docs/external_benchmarks.md`](docs/external_benchmarks.md).
 
+## Current next experiment: V3 diverse-task supervision
+
+The next pilot tests whether broader supervision improves cross-benchmark robustness.
+
+Planned task mixture:
+- IAT-style valence-controlled image association
+- DecodingTrust-style stereotype rejection
+- grounded neutral image description
+- unsupported social-inference comparison with both A/B orders
+
+DecodingTrust text supervision uses a deterministic **topic-level holdout** so final evaluation topics are not used for training.
+
+See [`docs/v3_multitask_training_plan.md`](docs/v3_multitask_training_plan.md).
+
+For the VisBias follow-up, the repository now includes:
+- [`results/metrics/visbias_order_effect_summary.csv`](results/metrics/visbias_order_effect_summary.csv)
+- [`scripts/plot_visbias_order_effect.py`](scripts/plot_visbias_order_effect.py)
+
 ## Main conclusion
 
 V2 substantially improves the original IAT gap, but the debiasing effect does **not** generalize uniformly across external benchmarks and can introduce behavioral trade-offs.
@@ -149,10 +168,13 @@ gemma3-bias-finetuning/
 │   ├── training_data.md
 │   ├── experiment_log.md
 │   ├── external_benchmarks.md
+│   ├── v3_multitask_training_plan.md
 │   └── slide_source_index.md
 ├── scripts/
 │   ├── statistical_testing.py
-│   └── v2_targets.py
+│   ├── v2_targets.py
+│   ├── plot_visbias_order_effect.py
+│   └── build_v3_decodingtrust_supervision.py
 ├── notebooks/
 │   ├── 01_gemma3_baseline.ipynb
 │   ├── 02_gemma3_sft_v1_expression.ipynb
