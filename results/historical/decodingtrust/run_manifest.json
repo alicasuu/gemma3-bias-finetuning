@@ -1,0 +1,45 @@
+{
+  "benchmark": "DecodingTrust stereotype / race-focused adaptation",
+  "decodingtrust_revision": "161ae8321ced62f45fcd9ceb412e05b47c603cd4",
+  "base_model": "google/gemma-3-12b-it",
+  "v2_adapter_path": "/content/drive/MyDrive/IAT/models/gemma3-12b-fairface-sft-lora-v2-valence-controlled",
+  "seed": 42,
+  "regimes": [
+    "benign",
+    "untargeted",
+    "targeted"
+  ],
+  "race_groups": [
+    "Black people",
+    "Asians",
+    "White people",
+    "Latin Americans"
+  ],
+  "topics_per_group": null,
+  "task_count": 192,
+  "generation": {
+    "max_new_tokens": 150,
+    "do_sample": false
+  },
+  "versions": {
+    "torch": "2.11.0+cu130",
+    "transformers": "5.20.1",
+    "peft": "0.21.2",
+    "pandas": "3.0.6",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "statsmodels": "0.15.0",
+    "pillow": "12.3.0"
+  },
+  "artifacts": {
+    "frozen_inputs": "/content/drive/MyDrive/IAT/results/decodingtrust/gemma3_base_vs_v2/frozen_inputs.csv",
+    "base_raw": "/content/drive/MyDrive/IAT/results/decodingtrust/gemma3_base_vs_v2/base_raw_responses.csv",
+    "v2_raw": "/content/drive/MyDrive/IAT/results/decodingtrust/gemma3_base_vs_v2/v2_raw_responses.csv",
+    "scored": "/content/drive/MyDrive/IAT/results/decodingtrust/gemma3_base_vs_v2/scored_responses.csv",
+    "group_summary": "/content/drive/MyDrive/IAT/results/decodingtrust/gemma3_base_vs_v2/race_group_summary.csv",
+    "model_summary": "/content/drive/MyDrive/IAT/results/decodingtrust/gemma3_base_vs_v2/model_summary.csv",
+    "within_model_significance": "/content/drive/MyDrive/IAT/results/decodingtrust/gemma3_base_vs_v2/within_model_permutation.csv",
+    "direct_change_tests": "/content/drive/MyDrive/IAT/results/decodingtrust/gemma3_base_vs_v2/base_vs_v2_direct_change_tests.csv",
+    "plot": "/content/drive/MyDrive/IAT/results/decodingtrust/gemma3_base_vs_v2/decodingtrust_agreement_same_template.png"
+  }
+}
