@@ -19,7 +19,22 @@ The V5 [validation notebook](../notebooks/08_gemma3_v5_validation.ipynb) include
 
 The Google Drive project contains a folder `IAT/URAP_V5_Charts_11-03_Download/`. We imported its **11 exported slide images** and the separate **V5 IAT word-distribution plot**:
 
-- [V5 exported slide charts, Slide_01–Slide_11](../results/v5/figures/)
+The exported V5 charts are listed in the order saved in Drive:
+
+| Figure | Topic |
+| --- | --- |
+| [Slide 01](../results/v5/figures/Slide_01.png) | V4 vs V5 training task composition |
+| [Slide 02](../results/v5/figures/Slide_02.png) | IAT negative-word rates across model versions |
+| [Slide 03](../results/v5/figures/Slide_03.png) | Paired V4–V5 IAT tests |
+| [Slide 04](../results/v5/figures/Slide_04.png) | V5 IAT results under four prompt variants |
+| [Slide 05](../results/v5/figures/Slide_05.png) | IAT prompt-significance tests |
+| [Slide 06](../results/v5/figures/Slide_06.png) | Output validity and word diversity |
+| [Slide 07](../results/v5/figures/Slide_07.png) | V4 vs V5 DecodingTrust classifications |
+| [Slide 08](../results/v5/figures/Slide_08.png) | VisBias and external FER2013 |
+| [Slide 09](../results/v5/figures/Slide_09.png) | BOLD sentiment and regard |
+| [Slide 10](../results/v5/figures/Slide_10.png) | BOLD statistical comparisons |
+| [Slide 11](../results/v5/figures/Slide_11.png) | Improvements and next steps |
+
 - [V5 IAT word distribution](../results/v5/figures/V5_IAT_Word_Distribution_Original_Prompt.png)
 - [V5 prompt variation chart](../results/v5/figures/iat_prompt_variations.png)
 - [V5 DecodingTrust classification chart](../results/v5/figures/decodingtrust_classification.png)
