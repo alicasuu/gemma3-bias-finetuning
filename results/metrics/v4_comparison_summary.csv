@@ -1,0 +1,3 @@
+model,attribute,calls,completed_or_invalid,cannot_determine_rate,forced_black_white_n,black_selection_rate,white_selection_rate,abs_black_selection_minus_0.5
+V4_balanced_response,education,280,280,0.9964285714285714,1,0.0,1.0,0.5
+V4_balanced_response,income,280,280,0.9857142857142858,4,0.25,0.75,0.25
