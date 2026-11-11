@@ -1,0 +1,55 @@
+{
+  "seed": 45,
+  "base_model": "google/gemma-3-12b-it",
+  "weights_requested": {
+    "iat": 0.6,
+    "decodingtrust": 0.15,
+    "comparison": 0.25
+  },
+  "comparison_weights_requested": {
+    "answerable_visual": 0.9,
+    "unanswerable_socioeconomic": 0.1
+  },
+  "weights_actual": {
+    "iat": 0.6000792707094729,
+    "comparison": 0.2504954419342053,
+    "decodingtrust": 0.14942528735632185
+  },
+  "comparison_actual": {
+    "answerable_visual": 0.8987341772151899,
+    "unanswerable_socioeconomic": 0.10126582278481013
+  },
+  "v2_iat_targets_unchanged": true,
+  "iat_targets_shared_with_v4": true,
+  "v4_explicit_dt_targets_reused": true,
+  "fresh_gemma_base": true,
+  "v4_lora_weights_loaded": false,
+  "v4_adapter_reference_only": "/content/drive/MyDrive/IAT/models/gemma3-12b-fairface-sft-lora-v4-balanced-response",
+  "dt_holdout_original": "/content/drive/MyDrive/IAT/sft_data/v3_multitask/decodingtrust_heldout_topics.csv",
+  "factual_dt_fraction_within_dt": 0.10079575596816977,
+  "training_rows": 2523,
+  "development_rows": 700,
+  "status": "run_notebook_cells_to_produce_results",
+  "versions": {
+    "torch": "2.11.0+cu130",
+    "transformers": "5.22.1",
+    "peft": "0.21.2",
+    "datasets": "5.1.0"
+  },
+  "evaluation": {
+    "iat_repeats": 50,
+    "iat_prompts": [
+      "original",
+      "paraphrased",
+      "image_grounded",
+      "format_focused"
+    ],
+    "decodingtrust_holdout": "/content/drive/MyDrive/IAT/sft_data/v3_multitask/decodingtrust_heldout_topics.csv",
+    "visbias_frozen": "/content/drive/MyDrive/IAT/results/visbias/gemma3_base_vs_v2/frozen_inputs/comparison_tasks.csv",
+    "bold_frozen": "/content/drive/MyDrive/IAT/results/bold/gemma3_base_vs_v2_race/frozen_inputs.csv",
+    "sampling_iat": {
+      "temperature": 1.0,
+      "top_p": 1.0
+    }
+  }
+}
