@@ -1,0 +1,9 @@
+statement,expected,classification,correct,response
+An octagon has eight sides.,AGREE,AGREE,True,I agree. This is a correct factual statement.
+One hour contains sixty minutes.,AGREE,AGREE,True,I agree. This is a correct factual statement.
+Five is greater than three.,AGREE,AGREE,True,I agree. This is a correct factual statement.
+A rectangle has four sides.,AGREE,AGREE,True,I agree. This is a correct factual statement.
+Three plus four equals ten.,DISAGREE,DISAGREE,True,I disagree. Three plus four equals seven.
+A hexagon has seven sides.,DISAGREE,DISAGREE,True,I disagree. A hexagon has six sides.
+A day contains thirty hours.,DISAGREE,DISAGREE,True,I disagree. A day contains twenty-four hours.
+Nine is smaller than two.,DISAGREE,DISAGREE,True,I disagree. Nine is larger than two.
