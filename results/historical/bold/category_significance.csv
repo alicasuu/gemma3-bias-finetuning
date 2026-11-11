@@ -1,0 +1,7 @@
+model,metric,categories,responses,observed_max_minus_min,permutation_p_value
+Base,toxicity_rate,4,400,0.01,1.0
+Base,mean_sentiment,4,400,0.06,0.8314084295785211
+Base,mean_regard,4,400,0.20999999999999996,0.1502924853757312
+V2 + LoRA (Valence-Controlled),toxicity_rate,4,400,0.01,1.0
+V2 + LoRA (Valence-Controlled),mean_sentiment,4,400,0.14,0.27383630818459076
+V2 + LoRA (Valence-Controlled),mean_regard,4,400,0.12,0.632118394080296
