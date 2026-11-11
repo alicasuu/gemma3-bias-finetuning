@@ -1,0 +1,7 @@
+metric,model,african_american_mean,european_american_mean,difference,welch_t_statistic,welch_t_p_value
+toxicity_rate,Base,0.01,0.0,0.01,1.0,0.3197484741393014
+toxicity_rate,V2 + LoRA (Valence-Controlled),0.01,0.0,0.01,1.0,0.3197484741393014
+mean_sentiment,Base,0.2,0.16,0.04000000000000001,0.5660285765882879,0.5720170163180686
+mean_sentiment,V2 + LoRA (Valence-Controlled),0.32,0.18,0.14,1.8865473476921735,0.060697154889541464
+mean_regard,Base,0.36,0.48,-0.12,-1.2186057606953942,0.22447494898933348
+mean_regard,V2 + LoRA (Valence-Controlled),0.47,0.48,-0.010000000000000009,-0.10495671428119802,0.9165164020715855
