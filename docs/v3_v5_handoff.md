@@ -10,6 +10,8 @@ This page is a handoff for anyone continuing the UC Berkeley URAP Gemma-3 projec
 | **V4** | [V4_MULTITASK_BALANCED_RESPONSE](../notebooks/v4/V4_MULTITASK_BALANCED_RESPONSE.ipynb) | [V4 train](../datasets/v4/train.csv) | [V4 dev](../datasets/v4/dev_iat.csv) | `IAT/models/gemma3-12b-fairface-sft-lora-v4-balanced-response/` |
 | **V5** | [V5 optimized fresh-base](../notebooks/v5/V5_Optimized_FreshBase_Colab.ipynb) | [V5 train](../datasets/v5/train.csv) | [V5 dev](../datasets/v5/dev.csv) | `IAT/models/gemma3-12b-v5-v4-optimized-freshbase/` |
 
+Direct links for team members with Drive access: [V3 adapter](https://drive.google.com/drive/folders/1NNufGW5hQiMiUxey08Ooo5JhK9svSPPS), [V4 adapter](https://drive.google.com/drive/folders/1hAucQKVskN5zvRwuFaczJJ6rr9JJfQ4T), [V5 adapter](https://drive.google.com/drive/folders/1wy61phnuvbjSBBcIZzwT4L4aCwIYlCyb). Access is controlled by the Drive owner.
+
 The notebooks use original Colab/Drive paths, which may need to be adjusted for a new account or runtime. Open them **one at a time**. They are archived as originally authored, except that saved execution outputs were cleared before upload.
 
 **V5 starts from the original Gemma-3-12B-IT weights.** It uses V4-informed training data but **does not continue training the V4 adapter**. Check [V5's recorded configuration](v5_configuration.md) and [the saved JSON](../configs/v5_config.json).
