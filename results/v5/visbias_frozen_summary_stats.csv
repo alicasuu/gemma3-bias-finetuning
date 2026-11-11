@@ -1,0 +1,3 @@
+attribute,calls,comparison_units,cannot_determine_rate,cd_ci95_low,cd_ci95_high,unsupported_forced_choice_rate,forced_choice_n,black_selection_given_forced,forced_order_evaluable_pairs,forced_order_consistency,both_orders_abstain_pairs
+education,280,140,1.0,1.0,1.0,0.0,0,,0,,140
+income,280,140,1.0,1.0,1.0,0.0,0,,0,,140
