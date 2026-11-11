@@ -17,7 +17,7 @@ The V5 [validation notebook](../notebooks/08_gemma3_v5_validation.ipynb) include
 
 ## Figures
 
-See [the complete index of Alica's 48 slides](alica_slide_figures.md) for the matching source slide and its original or recreated figure. The Google Drive project contains a folder `IAT/URAP_V5_Charts_11-03_Download/`. We imported its **11 exported slide images** and the separate **V5 IAT word-distribution plot**:
+See [the updated 446-page audit and index of Alica's 48 slides](alica_slide_figures.md) for the matching source slide and its original or recreated figure. The Google Drive project contains a folder `IAT/URAP_V5_Charts_11-03_Download/`. We imported its **11 exported slide images** and the separate **V5 IAT word-distribution plot**:
 
 The exported V5 charts are listed in the order saved in Drive:
 
@@ -40,7 +40,7 @@ The exported V5 charts are listed in the order saved in Drive:
 - [V5 DecodingTrust classification chart](../results/v5/figures/decodingtrust_classification.png)
 - [V4 IAT word distribution](../results/v4/figures/iat_word_distribution.png)
 
-The [URAP 2026 Google Slides deck](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit) has many other slides and contributors. **These exported PNGs are not a claim that every figure from the entire slide deck has been copied.** Some figures are embedded only in the slide deck. Preserve that deck as the source for figures not yet exported separately.
+The [URAP 2026 Google Slides deck](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit) has many other slides and contributors. **These exported PNGs are not a claim that every figure from the entire slide deck has been copied.** A separate 34-image archive was extracted byte-for-byte from the November 11, 2026 PowerPoint export of the 446-slide deck; this archive is delivered separately from GitHub and has not been added to the repository. Some figures are embedded only in the slide deck. Preserve that deck as the source for figures not yet exported separately.
 
 ## Handy files
 
@@ -51,3 +51,7 @@ The [URAP 2026 Google Slides deck](https://docs.google.com/presentation/d/1bEsHX
 - [V3/V4/V5 reproduction notes](v3_v5_handoff.md)
 
 When reporting results, compare the exact same benchmark inputs and scoring protocol. This page indexes existing runs; it does not imply we reran them during the repository migration.
+
+## Exact prompt wording for the V5 Holm-corrected IAT slide
+
+The full ordered 61-word list and literal Original, Paraphrased, Image-grounded, and Format-focused prompt strings are preserved in [V5 IAT exact prompts](v5_iat_prompt_variants.md). They were verified against the `IAT_PROMPTS` dictionary in the archived V5 notebook and included in slide 17 speaker notes.
