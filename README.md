@@ -31,13 +31,13 @@ The November 3 research presentation reports that V5 reduced the overall negativ
 
 | Location | Contents |
 | --- | --- |
-| [`notebooks/`](notebooks/) | Original Base–V2 notebooks already in this repository |
+| [`notebooks/`](notebooks/) | Base–V2 notebooks plus V5 training and validation notebooks |
 | [`scripts/`](scripts/) | Data preparation, statistical testing and plotting |
 | [`docs/v3_v5_handoff.md`](docs/v3_v5_handoff.md) | V3–V5 datasets, adapters, outputs and handoff steps |
 | [`docs/v5_configuration.md`](docs/v5_configuration.md) | V5 training mixture, software versions and evaluation settings |
 | [`docs/training_data.md`](docs/training_data.md) | Earlier dataset construction |
 | [`docs/external_benchmarks.md`](docs/external_benchmarks.md) | External benchmark methodology |
-| [`results/`](results/) | Published lightweight metrics |
+| [`results/`](results/) | Published V3–V5 lightweight metrics and earlier results |
 
 **The V3–V5 datasets, saved adapters and full output folders are in the team's Google Drive under `IAT/`.** They are catalogued in the handoff document. We keep large weights and face-image datasets outside this public GitHub repository.
 
@@ -55,7 +55,7 @@ The original IAT test uses 12 held-out images, 61 possible words and 50 generati
 
 Start with this README, then [the V3–V5 handoff](docs/v3_v5_handoff.md). The goal is to understand **what changed between versions, where the exact data and model live, and how to check whether a reported improvement is real**.
 
-The historical notebooks are in GitHub; the newer experiment artifacts are indexed in Drive. The full V3–V5 runnable notebook collection has not yet been mirrored into this repository, so use the original notebooks with the saved configurations when reproducing those versions.
+The repository includes the V5 training and validation notebooks, its saved configuration in [`configs/v5_config.json`](configs/v5_config.json), and selected V3–V5 summary CSVs. V3/V4 original training notebooks and larger datasets remain in Drive. Start with evaluation using saved adapters; training and full end-to-end reproduction require access to the team's original data and model files.
 
 ## Data and credits
 
