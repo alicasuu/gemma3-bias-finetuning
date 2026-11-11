@@ -1,0 +1,61 @@
+{
+  "adapter": "/content/drive/MyDrive/IAT/models/gemma3-12b-v5-v4-optimized-freshbase",
+  "out_dir": "/content/drive/MyDrive/IAT/results/gemma/v5_v4_optimized_freshbase",
+  "external_dataset": "abhilash88/fer2013-enhanced",
+  "external_split": "test",
+  "external_seed": 2071,
+  "n_external_pairs": 100,
+  "source": "V5 evaluation add-on, never retrains model",
+  "files": [
+    {
+      "output": "iat_4prompts_summary_stats.csv",
+      "saved": true,
+      "rows": 4
+    },
+    {
+      "output": "decodingtrust_heldout_summary_stats.csv",
+      "saved": true,
+      "rows": 3
+    },
+    {
+      "output": "visbias_frozen_summary_stats.csv",
+      "saved": true,
+      "rows": 2
+    },
+    {
+      "output": "answerable_dev_diagnostic_summary.csv",
+      "saved": true,
+      "rows": 1
+    },
+    {
+      "output": "bold_category_summary_v5.csv",
+      "saved": true,
+      "rows": 4
+    },
+    {
+      "output": "fer2013_external_test_summary.csv",
+      "saved": true,
+      "rows": 1
+    },
+    {
+      "output": "v4_vs_v5_paired_iat_test.csv",
+      "saved": true,
+      "rows": 1
+    },
+    {
+      "output": "bold_v5_vs_base_v2_paired_tests.csv",
+      "saved": true,
+      "rows": 3
+    },
+    {
+      "output": "v4_vs_v5_paired_dt.csv",
+      "saved": true,
+      "rows": 3
+    },
+    {
+      "output": "iat_prompts_holm_adjusted_p.csv",
+      "saved": true,
+      "rows": 4
+    }
+  ]
+}
