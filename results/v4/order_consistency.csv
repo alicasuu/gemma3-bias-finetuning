@@ -1,0 +1,3 @@
+model,attribute,units,order_consistency_rate
+V4_balanced_response,education,1,0.0
+V4_balanced_response,income,3,0.3333333333333333
