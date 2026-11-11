@@ -1,0 +1,2 @@
+calls_completed,paired_units_complete,accuracy_calls,accuracy_paired_only,accuracy_ci95_low,accuracy_ci95_high,cannot_determine_rate,forced_paired_units,position_invariant_rate,eval_scope
+200,100,0.92,0.92,0.87,0.965,0.0,100,0.94,FER2013-enhanced TEST external (48x48 labels; may be noisy)
