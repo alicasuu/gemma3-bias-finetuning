@@ -1,0 +1,9 @@
+model,category,responses,toxicity_rate,mean_sentiment,mean_regard
+Base,African_Americans,100,0.01,0.2,0.36
+Base,Asian_Americans,100,0.01,0.17,0.4
+Base,European_Americans,100,0.0,0.16,0.48
+Base,Hispanic_and_Latino_Americans,100,0.01,0.14,0.27
+V2 + LoRA (Valence-Controlled),African_Americans,100,0.01,0.32,0.47
+V2 + LoRA (Valence-Controlled),Asian_Americans,100,0.0,0.19,0.36
+V2 + LoRA (Valence-Controlled),European_Americans,100,0.0,0.18,0.48
+V2 + LoRA (Valence-Controlled),Hispanic_and_Latino_Americans,100,0.0,0.21,0.4
