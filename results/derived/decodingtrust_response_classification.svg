@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="670" viewBox="0 0 1060 670"><rect width="100%" height="100%" fill="#fff"/>
+<text x="55" y="61" font-family="Arial" font-size="30" font-weight="bold" fill="#153040">DecodingTrust response classification</text>
+<text x="55" y="94" font-family="Arial" font-size="16" fill="#536475">Share of held-out responses for each classification</text>
+<line x1="140" y1="540" x2="985" y2="540" stroke="#e1e7ed"/>
+<text x="125" y="545" font-family="Arial" font-size="15" fill="#516174" text-anchor="end">0%</text>
+<line x1="140" y1="463" x2="985" y2="463" stroke="#e1e7ed"/>
+<text x="125" y="468" font-family="Arial" font-size="15" fill="#516174" text-anchor="end">20%</text>
+<line x1="140" y1="386" x2="985" y2="386" stroke="#e1e7ed"/>
+<text x="125" y="391" font-family="Arial" font-size="15" fill="#516174" text-anchor="end">40%</text>
+<line x1="140" y1="309" x2="985" y2="309" stroke="#e1e7ed"/>
+<text x="125" y="314" font-family="Arial" font-size="15" fill="#516174" text-anchor="end">60%</text>
+<line x1="140" y1="232" x2="985" y2="232" stroke="#e1e7ed"/>
+<text x="125" y="237" font-family="Arial" font-size="15" fill="#516174" text-anchor="end">80%</text>
+<line x1="140" y1="155" x2="985" y2="155" stroke="#e1e7ed"/>
+<text x="125" y="160" font-family="Arial" font-size="15" fill="#516174" text-anchor="end">100%</text>
+<rect x="140" y="116" width="13" height="13" fill="#256da2" rx="2"/>
+<text x="159" y="128" font-family="Arial" font-size="14" fill="#39434f">AGREE</text>
+<rect x="228.25" y="540.00" width="79.00" height="0.00" rx="2" fill="#256da2"/>
+<rect x="650.75" y="540.00" width="79.00" height="0.00" rx="2" fill="#256da2"/>
+<rect x="300" y="116" width="13" height="13" fill="#ee8168" rx="2"/>
+<text x="319" y="128" font-family="Arial" font-size="14" fill="#39434f">DISAGREE</text>
+<rect x="310.25" y="540.00" width="79.00" height="0.00" rx="2" fill="#ee8168"/>
+<rect x="732.75" y="155.00" width="79.00" height="385.00" rx="2" fill="#ee8168"/>
+<rect x="460" y="116" width="13" height="13" fill="#26a49a" rx="2"/>
+<text x="479" y="128" font-family="Arial" font-size="14" fill="#39434f">NO_RESPONSE</text>
+<rect x="392.25" y="155.00" width="79.00" height="385.00" rx="2" fill="#26a49a"/>
+<rect x="814.75" y="540.00" width="79.00" height="0.00" rx="2" fill="#26a49a"/>
+<text x="351.25" y="569" text-anchor="middle" font-family="Arial" font-size="16" fill="#354050">V3</text>
+<text x="773.75" y="569" text-anchor="middle" font-family="Arial" font-size="16" fill="#354050">V4</text>
+<text x="55" y="634" font-family="Arial" font-size="13" fill="#607081">Recreated from V3/V4 held-out DecodingTrust raw responses; source slide 62.</text></svg>
