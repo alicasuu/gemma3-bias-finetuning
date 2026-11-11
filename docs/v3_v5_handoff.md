@@ -73,7 +73,7 @@ The full presentation also contains other team members' figures; those are not a
 ## What still needs a runtime or team access
 
 - **Weights and benchmark images:** final adapter files (about 262 MB each), checkpoint folders, FairFace/VisBias/IAT faces and external FER2013 images remain in Drive or their original datasets. Regular GitHub files cannot store a single 262 MB adapter; use Git LFS or the controlled project Drive.
-- **V3/V4 BOLD:** unlike the V2 and V5 runs, no separate V3/V4 BOLD output folder was located in the reviewed Drive source.
+- **V3/V4 BOLD:** these versions were not evaluated on BOLD. Their external benchmarks were DecodingTrust and VisBias, alongside IAT.
 - **End-to-end repeatability:** the code and committed CSVs have been checked for syntax, counts and topic split, but **full GPU training/evaluation has not been rerun during this handoff**. A new researcher should compare their actual outputs against the archived results.
 
 For any third-party images or benchmark datasets, follow the original usage terms before further sharing.
