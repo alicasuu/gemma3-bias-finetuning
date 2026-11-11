@@ -7,17 +7,17 @@ This page maps the evaluations actually saved in the repository. The datasets, o
 | Version | IAT | DecodingTrust | VisBias | BOLD | FER2013 |
 | --- | --- | --- | --- | --- | --- |
 | Base / V2 | [historical IAT](../results/historical/iat/) | [raw + scored](../results/historical/decodingtrust/) | [raw + scored](../results/historical/visbias/) | [raw + scored](../results/historical/bold/) | — |
-| V3 | [IAT outputs](../results/v3/iat/) | [held-out outputs](../results/v3/decodingtrust/) | [comparison results](../results/v3/) | No separate run located | — |
-| V4 | [IAT outputs](../results/v4/iat/) | [held-out outputs](../results/v4/decodingtrust/) | [comparison results](../results/v4/) | No separate run located | — |
+| V3 | [IAT outputs](../results/v3/iat/) | [held-out outputs](../results/v3/decodingtrust/) | [comparison results](../results/v3/) | Not run | — |
+| V4 | [IAT outputs](../results/v4/iat/) | [held-out outputs](../results/v4/decodingtrust/) | [comparison results](../results/v4/) | Not run | — |
 | V5 | [4-prompt IAT outputs](../results/v5/iat_4prompts_summary_stats.csv) | [held-out raw + summary](../results/v5/decodingtrust_heldout_raw.csv) | [frozen raw + summary](../results/v5/visbias_frozen_raw.csv) | [raw + scored](../results/v5/bold_frozen_raw.csv) | [external test results](../results/v5/fer2013_external_test_summary.csv) |
 
 The V5 [validation notebook](../notebooks/08_gemma3_v5_validation.ipynb) includes benchmark evaluation code. V3/V4 training notebooks include the earlier evaluations, and Base/V2 benchmark notebooks live in [notebooks/](../notebooks/).
 
-**Important distinction:** V5 has a saved BOLD evaluation and paired V5 vs Base/V2 analyses, but we have **not located standalone V3 or V4 BOLD run files** in the IAT Drive results directory. Don't present the table as though they exist.
+**Important distinction:** V5 has a saved BOLD evaluation and paired V5 vs Base/V2 analyses, but **V3 and V4 did not run BOLD** (confirmed by the researcher). Don't present the table as though they exist.
 
 ## Figures
 
-The Google Drive project contains a folder `IAT/URAP_V5_Charts_11-03_Download/`. We imported its **11 exported slide images** and the separate **V5 IAT word-distribution plot**:
+See [the complete index of Alica's 48 slides](alica_slide_figures.md) for the matching source slide and its original or recreated figure. The Google Drive project contains a folder `IAT/URAP_V5_Charts_11-03_Download/`. We imported its **11 exported slide images** and the separate **V5 IAT word-distribution plot**:
 
 The exported V5 charts are listed in the order saved in Drive:
 
