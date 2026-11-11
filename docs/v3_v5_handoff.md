@@ -68,7 +68,7 @@ The [model adapter metadata](../configs/adapters/) records V3/V4/V5 LoRA/process
 
 The team's [URAP 2026 slide deck](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit) is the source presentation. We added the eleven exported **V5 charts** from `IAT/URAP_V5_Charts_11-03_Download/` to [results/v5/figures/](../results/v5/figures/), plus separate IAT, DecodingTrust and V4 figures. For the names and topics of each figure, see [evaluation_coverage.md](evaluation_coverage.md).
 
-The full presentation also contains other team members' figures; those are not all mirrored into this repo. See the [Alica slide-and-figure index](alica_slide_figures.md) for all 48 pages labeled with her name. V3/V4 BOLD runs were not performed; BOLD coverage is Base/V2 and V5.
+The full presentation also contains other team members' figures; those are not all mirrored into this repo. See the [Alica slide-and-figure index](alica_slide_figures.md) for all 48 pages labeled with her name across the 446-page deck. V3/V4 BOLD runs were not performed; BOLD coverage is Base/V2 and V5.
 
 ## What still needs a runtime or team access
 
@@ -77,3 +77,7 @@ The full presentation also contains other team members' figures; those are not a
 - **End-to-end repeatability:** the code and committed CSVs have been checked for syntax, counts and topic split, but **full GPU training/evaluation has not been rerun during this handoff**. A new researcher should compare their actual outputs against the archived results.
 
 For any third-party images or benchmark datasets, follow the original usage terms before further sharing.
+
+## Exact V5 IAT prompt reproduction
+
+For the Holm-corrected four-condition plot on the November 3 Alica slide (current slide 17), reproduce the prompts verbatim using [the four exact prompt templates and ordered word list](v5_iat_prompt_variants.md). The deck's speaker notes for that slide also contain the complete prompts.
