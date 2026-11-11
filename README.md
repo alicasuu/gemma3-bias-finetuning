@@ -29,7 +29,7 @@ A smaller gap is useful, but it can hide a problem: a model might simply stop us
 
 In the November 3 evaluation, V5 reduced the overall IAT negative-word rate from **68.9% to 19.5%** in the reported comparison. It also showed encouraging DecodingTrust, VisBias and FER2013 results. BOLD sentiment and differences between groups still need more work. [Research presentation](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit).
 
-For a quick view of **which versions were actually run on each benchmark and which figures were exported**, see the [evaluation and figure index](docs/evaluation_coverage.md).
+For a quick view of **which versions were actually run on each benchmark and which figures were exported**, see the [evaluation and figure index](docs/evaluation_coverage.md). The [Alica slide index](docs/alica_slide_figures.md) links **every slide credited to Alica** to its corresponding figures and data. **V3/V4 ran IAT, VisBias and DecodingTrust—not BOLD.**
 
 ## What's in this repository?
 
