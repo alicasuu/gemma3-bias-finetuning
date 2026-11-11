@@ -1,0 +1,2 @@
+calls,accuracy,cannot_determine_rate,paired_forced_units,position_invariant_rate,eval_scope
+200,0.955,0.0,100,0.97,FairFace development diagnostic (not independent test)
