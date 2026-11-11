@@ -59,11 +59,10 @@ Other intermediate versions are kept in the respective notebook folders so the e
 ```bash
 git clone https://github.com/alicasuu/gemma3-bias-finetuning.git
 cd gemma3-bias-finetuning
-pip install -r requirements.txt
 python scripts/check_reproducibility.py
 ```
 
-The last command checks CSV row counts, V3–V5 task mixes, held-out DecodingTrust topics and key files. **It runs locally without a GPU.**
+The check validates CSV row counts, V3–V5 task mixes, held-out DecodingTrust topics and key files. **It uses the Python standard library and runs without a GPU.** To run model notebooks, install the GPU-compatible dependencies from `requirements.txt` in your Colab runtime.
 
 To run a model experiment:
 
