@@ -2,7 +2,7 @@
 
 **Reviewed:** the full 445-slide [URAP 2026 presentation](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit). This index covers **48 slides explicitly labeled Alica or Alica Su**. Slides by Peyton, Elias, and other collaborators are not assigned to Alica here.
 
-The **original PNGs** were copied from the project Drive's saved figure folders wherever available. For a few **10/27 charts whose PNG files exist only as images embedded in Google Slides**, a clearly labeled **recreated SVG** was generated from the committed experiment CSVs. Recreated plots use the same saved results, but their visual styling and selection of plotted categories may differ from the slide. Each row links the exact source slide for comparison.
+The **original PNGs** were copied from the project Drive's saved figure folders wherever available. For several **10/27 charts whose PNG files exist only as images embedded in Google Slides**, a clearly labeled **recreated SVG** was generated from the committed experiment CSVs. The 10/27 next-steps image on slide 65 is available through the source slide, rather than as a separate repo PNG. Recreated plots use the same saved results, but their visual styling and selection of plotted categories may differ from the slide. Each row links the exact source slide for comparison.
 
 **Experiment scope:** V3 and V4 were evaluated on **IAT, DecodingTrust and VisBias**. **BOLD was not run for V3 or V4.** BOLD was evaluated for Base/V2 and V5. An older slide's “Run BOLD on V3/V4” was a proposed next step, not a completed result.
 
@@ -38,7 +38,7 @@ The **original PNGs** were copied from the project Drive's saved figure folders 
 | 62 | DecodingTrust Response Classification | [DecodingTrust classifications (recreated)](../results/derived/decodingtrust_response_classification.svg) | [Open slide](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit#slide=id.h7cd6016d4f21ba9e_3_69) |
 | 63 | VisBias Race Selection by Attribute | [VisBias selection (recreated)](../results/derived/visbias_v3_v4_race_selection.svg) | [Open slide](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit#slide=id.h7cd6016d4f21ba9e_3_74) |
 | 64 | VisBias Response Position Distribution | [VisBias answer position (recreated)](../results/derived/visbias_v3_v4_response_position.svg) | [Open slide](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit#slide=id.h7cd6016d4f21ba9e_3_87) |
-| 65 | 10/27 Alica | [V5 next steps (related original export)](../results/v5/figures/Slide_11.png) | [Open slide](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit#slide=id.h7cd6016d4f21ba9e_3_14) |
+| 65 | 10/27 Alica | Original `05_v5_next_step.png` is embedded only in this Google slide (see source link) | [Open slide](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit#slide=id.h7cd6016d4f21ba9e_3_14) |
 | 66 | Built and evaluated V3 / V4 multitask LoRA | [V3/V4 experiment handoff](../docs/v3_v5_handoff.md) | [Open slide](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit#slide=id.h7cd6016d4f21ba9e_3_114) |
 | 67 | Next steps | [V3/V4 outcomes and follow-up](../docs/evaluation_coverage.md) | [Open slide](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit#slide=id.h7cd6016d4f21ba9e_3_119) |
 
