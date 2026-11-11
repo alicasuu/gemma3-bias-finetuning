@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="670" viewBox="0 0 1060 670">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="65" y="65" font-family="Arial" font-size="30" fill="#142635" font-weight="bold">IAT negative-word rates across experiments</text>
+<text x="65" y="95" font-family="Arial" font-size="16" fill="#52616b">Black and White face groups · original prompt · 12 images</text>
+<line x1="120" y1="543" x2="1015" y2="543" stroke="#e6ecef" />
+<text x="108" y="548" text-anchor="end" font-family="Arial" font-size="14" fill="#53616b">0%</text>
+<line x1="120" y1="463.40000000000003" x2="1015" y2="463.40000000000003" stroke="#e6ecef" />
+<text x="108" y="468.40000000000003" text-anchor="end" font-family="Arial" font-size="14" fill="#53616b">20%</text>
+<line x1="120" y1="383.79999999999995" x2="1015" y2="383.79999999999995" stroke="#e6ecef" />
+<text x="108" y="388.79999999999995" text-anchor="end" font-family="Arial" font-size="14" fill="#53616b">40%</text>
+<line x1="120" y1="304.20000000000005" x2="1015" y2="304.20000000000005" stroke="#e6ecef" />
+<text x="108" y="309.20000000000005" text-anchor="end" font-family="Arial" font-size="14" fill="#53616b">60%</text>
+<line x1="120" y1="224.59999999999997" x2="1015" y2="224.59999999999997" stroke="#e6ecef" />
+<text x="108" y="229.59999999999997" text-anchor="end" font-family="Arial" font-size="14" fill="#53616b">80%</text>
+<line x1="120" y1="145" x2="1015" y2="145" stroke="#e6ecef" />
+<text x="108" y="150" text-anchor="end" font-family="Arial" font-size="14" fill="#53616b">100%</text>
+<rect x="120" y="114" width="14" height="14" rx="2" fill="#2563a6"/>
+<text x="143" y="126" font-family="Arial" font-size="14" fill="#253544">Black faces</text>
+<rect x="137.9" y="386.5" width="38.4" height="156.5" rx="2" fill="#2563a6"/>
+<rect x="287.1" y="283.0" width="38.4" height="260.0" rx="2" fill="#2563a6"/>
+<rect x="436.2" y="475.8" width="38.4" height="67.2" rx="2" fill="#2563a6"/>
+<rect x="585.4" y="467.4" width="38.4" height="75.6" rx="2" fill="#2563a6"/>
+<rect x="734.6" y="285.2" width="38.4" height="257.8" rx="2" fill="#2563a6"/>
+<rect x="883.7" y="463.0" width="38.4" height="80.0" rx="2" fill="#2563a6"/>
+<rect x="320" y="114" width="14" height="14" rx="2" fill="#ea795f"/>
+<text x="343" y="126" font-family="Arial" font-size="14" fill="#253544">White faces</text>
+<rect x="179.3" y="518.7" width="38.4" height="24.3" rx="2" fill="#ea795f"/>
+<rect x="328.5" y="260.4" width="38.4" height="282.6" rx="2" fill="#ea795f"/>
+<rect x="477.7" y="480.2" width="38.4" height="62.8" rx="2" fill="#ea795f"/>
+<rect x="626.8" y="467.4" width="38.4" height="75.6" rx="2" fill="#ea795f"/>
+<rect x="776.0" y="252.0" width="38.4" height="291.0" rx="2" fill="#ea795f"/>
+<rect x="925.2" y="467.8" width="38.4" height="75.2" rx="2" fill="#ea795f"/>
+<text x="194.58333333333331" y="570" text-anchor="middle" font-family="Arial" font-size="16" fill="#263746">Base</text>
+<text x="343.75" y="570" text-anchor="middle" font-family="Arial" font-size="16" fill="#263746">V1</text>
+<text x="492.91666666666663" y="570" text-anchor="middle" font-family="Arial" font-size="16" fill="#263746">V2</text>
+<text x="642.0833333333333" y="570" text-anchor="middle" font-family="Arial" font-size="16" fill="#263746">V3</text>
+<text x="791.25" y="570" text-anchor="middle" font-family="Arial" font-size="16" fill="#263746">V4</text>
+<text x="940.4166666666666" y="570" text-anchor="middle" font-family="Arial" font-size="16" fill="#263746">V5</text>
+<text x="65" y="626" font-family="Arial" font-size="13" fill="#64727d">Recreated from archived Base–V5 IAT summary CSVs; source slides: 56 and 15.</text>
+</svg>
