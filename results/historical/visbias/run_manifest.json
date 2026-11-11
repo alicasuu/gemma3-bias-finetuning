@@ -1,0 +1,63 @@
+{
+  "benchmark": "VisBias race-focused local Gemma-3 adaptation",
+  "visbias_revision": "6a129c5d6e0d2278325811196ac33a1bc522408d",
+  "base_model": "google/gemma-3-12b-it",
+  "v2_adapter_path": "/content/drive/MyDrive/IAT/models/gemma3-12b-fairface-sft-lora-v2-valence-controlled",
+  "seed": 42,
+  "target_matched_pairs": 140,
+  "selected_matched_pairs": 140,
+  "comparison_units": 280,
+  "comparison_calls_per_model": 560,
+  "reverse_image_order": true,
+  "run_description_tasks": false,
+  "occupations": [
+    "CEO",
+    "basketball_player",
+    "cook",
+    "doctor",
+    "firefighter",
+    "lawyer",
+    "nurse"
+  ],
+  "genders": [
+    "female",
+    "male"
+  ],
+  "races": [
+    "black",
+    "white"
+  ],
+  "attributes": [
+    "income",
+    "education"
+  ],
+  "versions": {
+    "torch": "2.11.0+cu130",
+    "transformers": "5.20.2",
+    "peft": "0.21.2",
+    "pandas": "3.0.6",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "statsmodels": "0.15.0",
+    "pillow": "12.3.0"
+  },
+  "artifacts": {
+    "pair_manifest": "/content/drive/MyDrive/IAT/results/visbias/gemma3_base_vs_v2/frozen_inputs/matched_pairs.csv",
+    "comparison_tasks": "/content/drive/MyDrive/IAT/results/visbias/gemma3_base_vs_v2/frozen_inputs/comparison_tasks.csv",
+    "description_tasks": "/content/drive/MyDrive/IAT/results/visbias/gemma3_base_vs_v2/frozen_inputs/description_tasks.csv",
+    "base_raw": "/content/drive/MyDrive/IAT/results/visbias/gemma3_base_vs_v2/base_raw_responses.csv",
+    "v2_raw": "/content/drive/MyDrive/IAT/results/visbias/gemma3_base_vs_v2/v2_raw_responses.csv",
+    "scored_comparisons": "/content/drive/MyDrive/IAT/results/visbias/gemma3_base_vs_v2/scored_comparisons.csv",
+    "comparison_summary": "/content/drive/MyDrive/IAT/results/visbias/gemma3_base_vs_v2/comparison_summary.csv",
+    "order_consistency": "/content/drive/MyDrive/IAT/results/visbias/gemma3_base_vs_v2/order_consistency.csv",
+    "direct_change": "/content/drive/MyDrive/IAT/results/visbias/gemma3_base_vs_v2/base_vs_v2_direct_change_tests.csv",
+    "ols": "/content/drive/MyDrive/IAT/results/visbias/gemma3_base_vs_v2/black_white_selection_ols.csv",
+    "plots": "/content/drive/MyDrive/IAT/results/visbias/gemma3_base_vs_v2/plots"
+  },
+  "adaptation_notes": [
+    "Matched Black/White images are compared in the same depicted occupational setting.",
+    "Image order is reversed within every occupation/gender/index/attribute comparison unit.",
+    "Cannot determine is allowed as the epistemically appropriate response.",
+    "This local Hugging Face run follows Elias's VisBias adaptation and is not an exact reproduction of the original paper score."
+  ]
+}
