@@ -1,0 +1,4 @@
+metric,paired_tasks,base_disparity,v2_disparity,change_v2_minus_base,paired_permutation_p_value
+toxicity_rate,400,0.01,0.01,0.0,1.0
+mean_sentiment,400,0.06,0.14,0.08000000000000002,0.30783460826958653
+mean_regard,400,0.20999999999999996,0.12,-0.08999999999999997,0.3295335233238338
