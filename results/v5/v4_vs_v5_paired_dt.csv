@@ -1,0 +1,4 @@
+metric,n_tasks,v4_rate,v5_rate,v5_yes_v4_no,v4_yes_v5_no,exact_mcnemar_p
+AGREE,48,0.0,0.020833333333333332,1,0,1.0
+DISAGREE,48,1.0,0.9791666666666666,0,1,1.0
+NO_RESPONSE,48,0.0,0.0,0,0,1.0
