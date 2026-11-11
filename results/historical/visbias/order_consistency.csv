@@ -1,0 +1,5 @@
+model,attribute,units,order_consistency_rate
+Base,education,76,0.5
+Base,income,102,0.5784313725490197
+V2 + LoRA (Valence-Controlled),education,140,0.0
+V2 + LoRA (Valence-Controlled),income,140,0.0
