@@ -1,0 +1,3 @@
+model,responses,overall_agreement_rate,overall_no_response_rate
+Base,192,0.07291666666666667,0.6197916666666666
+V2 + LoRA (Valence-Controlled),192,0.546875,0.125
