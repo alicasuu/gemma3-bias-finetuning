@@ -1,62 +1,88 @@
 # Gemma-3 Bias Fine-Tuning
 
-A UC Berkeley URAP research project studying **whether fine-tuning Gemma-3 changes racial bias in its responses—and whether those changes hold up outside the training benchmark.**
+**Can we make a vision-language model less biased without making it worse at other tasks?**
 
-We use `google/gemma-3-12b-it`, a vision-language model, and compare the original model with five supervised fine-tuning experiments. The main question is simple: **can we reduce biased associations without making the model less useful or just teaching it to avoid certain words?**
+This UC Berkeley URAP project studies that question using **Gemma-3-12B-IT**. We fine-tuned the model with LoRA/QLoRA, compared five training approaches, and tested whether changes carried over to new prompts and benchmarks.
 
-## What we did
+## The idea
 
-We started with a small, held-out image-and-word association test (IAT-style): the model sees a face and selects three words. We compare negative-word rates for Black and White faces. Then we check the same models on independent tasks: stereotype-related questions (DecodingTrust), text generation (BOLD), image comparisons and position bias (VisBias), and facial-expression recognition (FER2013).
+In our main IAT-style test, the model sees a face and chooses three words from a fixed list. We measure how often it chooses negative words for Black versus White faces.
 
-| Experiment | What changed | Why |
+A smaller gap is useful, but it can hide a problem: a model might simply stop using negative words altogether. That's why we also measure overall word choices and run independent tests:
+
+- **IAT:** positive/negative word associations and prompt sensitivity
+- **DecodingTrust:** stereotype-related responses
+- **VisBias:** unsupported judgments from images, abstention and image-order effects
+- **BOLD:** sentiment, regard and toxicity in generated text
+- **FER2013:** recognition of facial expressions on an external dataset
+
+## Experiment versions
+
+| Version | What changed | Why |
 | --- | --- | --- |
-| **Base** | Original Gemma-3-12B-IT | Establish a reference |
-| **V1** | Matched FairFace images with expression-derived answers | Test a first fine-tuning approach |
-| **V2** | Balanced positive/negative word targets | Avoid pushing all responses toward negative words |
-| **V3** | Mixed IAT, stereotype, description and comparison tasks | See whether improvements transfer to other tasks |
-| **V4** | Rebalanced response types | Improve robustness and useful answers |
-| **V5** | Optimized task mixture, trained from the **fresh base model** | Keep the strengths of earlier versions without stacking V4 weights |
+| **Base** | Original `google/gemma-3-12b-it` | Starting point |
+| **V1** | Fine-tuned with matched FairFace images | First IAT experiment |
+| **V2** | Controlled the balance of positive and negative target words | Reduce the global negative-word shift |
+| **V3** | Added stereotype, description and comparison tasks | Test whether improvements generalize |
+| **V4** | Rebalanced response types | Improve response quality and robustness |
+| **V5** | Optimized the task mixture and trained from a **fresh base model** | Address V4's trade-offs; V4 adapter weights were not loaded |
 
-**Important V5 detail:** V5 reuses some V4 *data design*, but starts from the original Gemma model. It does **not** load the V4 LoRA adapter. Its dataset has 2,523 training rows and 700 development rows; requested task proportions are 60% IAT, 15% DecodingTrust, and 25% comparison tasks. See [V5 configuration](docs/v5_configuration.md).
+In the November 3 evaluation, V5 reduced the overall IAT negative-word rate from **68.9% to 19.5%** in the reported comparison. It also showed encouraging DecodingTrust, VisBias and FER2013 results. BOLD sentiment and differences between groups still need more work. [Research presentation](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit).
 
-## What we learned
+## What's in this repository?
 
-Early results show why measuring only the IAT gap is insufficient. V2 reduced that gap, but performance on some other tasks got worse. The later versions were designed to address those trade-offs.
-
-The November 3 research presentation reports that V5 reduced the overall negative-word rate in the IAT comparison from **68.9% to 19.5%**, with promising results on some external tests. There are still open questions about BOLD sentiment, differences across groups, and sensitivity to how a question is phrased. Those numbers describe a particular experiment, not a universal fairness score.
-
-[View the research slides](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit).
-
-## Where to find things
-
-| Location | Contents |
+| Folder | Contents |
 | --- | --- |
-| [`notebooks/`](notebooks/) | Base–V2 notebooks plus V5 training and validation notebooks |
-| [`scripts/`](scripts/) | Data preparation, statistical testing and plotting |
-| [`docs/v3_v5_handoff.md`](docs/v3_v5_handoff.md) | V3–V5 datasets, adapters, outputs and handoff steps |
-| [`docs/v5_configuration.md`](docs/v5_configuration.md) | V5 training mixture, software versions and evaluation settings |
-| [`docs/training_data.md`](docs/training_data.md) | Earlier dataset construction |
-| [`docs/external_benchmarks.md`](docs/external_benchmarks.md) | External benchmark methodology |
-| [`results/`](results/) | Published V3–V5 lightweight metrics and earlier results |
+| [`datasets/`](datasets/) | Actual V1–V5 training and development CSVs, plus held-out topic lists |
+| [`notebooks/`](notebooks/) | Original Colab training/evaluation code and earlier notebooks |
+| [`configs/`](configs/) | V5 training config and V3–V5 LoRA adapter metadata |
+| [`results/`](results/) | Raw responses, summary metrics, statistical tests and research figures |
+| [`scripts/`](scripts/) | Data checks, preparation, statistics and plots |
+| [`docs/`](docs/) | Detailed training notes and reproduction guide |
 
-**The V3–V5 datasets, saved adapters and full output folders are in the team's Google Drive under `IAT/`.** They are catalogued in the handoff document. We keep large weights and face-image datasets outside this public GitHub repository.
+### Main notebooks
 
-## How to reproduce an experiment
+| Experiment | Open this first |
+| --- | --- |
+| V1–V2 | [Earlier notebooks](notebooks/) and [archived originals](notebooks/archives/) |
+| V3 | [V3 multitask training](notebooks/v3/V3_MULTITASK_COMPLETE.ipynb) |
+| V4 | [V4 balanced-response training](notebooks/v4/V4_MULTITASK_BALANCED_RESPONSE.ipynb) |
+| V5 training | [V5 optimized fresh-base notebook](notebooks/v5/V5_Optimized_FreshBase_Colab.ipynb) |
+| V5 evaluation | [V5 final validation](notebooks/08_gemma3_v5_validation.ipynb) |
 
-1. Open [the handoff guide](docs/v3_v5_handoff.md) and choose V3, V4 or V5.
-2. Get that version's **train/dev CSVs** and **saved LoRA adapter** from `IAT/sft_data/` and `IAT/models/` in Drive.
-3. Use the original Gemma-3-12B-IT model and the matching adapter to **evaluate first**, before spending GPU time retraining.
-4. Use the same held-out prompts, image order and generation settings as the original run. For V5, compare against the saved results in `IAT/results/gemma/v5_v4_optimized_freshbase/`.
-5. Compare negative-word rates **and** the Black–White gap, then check DecodingTrust, VisBias, BOLD and FER2013. Check the raw results before drawing conclusions.
+Other intermediate versions are kept in the respective notebook folders so the experiment history is easy to trace.
 
-The original IAT test uses 12 held-out images, 61 possible words and 50 generations per image. Since many generations come from the same image, statistical tests should account for that rather than treating all 600 responses as independent.
+## Getting started
 
-## For new team members
+```bash
+git clone https://github.com/alicasuu/gemma3-bias-finetuning.git
+cd gemma3-bias-finetuning
+pip install -r requirements.txt
+python scripts/check_reproducibility.py
+```
 
-Start with this README, then [the V3–V5 handoff](docs/v3_v5_handoff.md). The goal is to understand **what changed between versions, where the exact data and model live, and how to check whether a reported improvement is real**.
+The last command checks CSV row counts, V3–V5 task mixes, held-out DecodingTrust topics and key files. **It runs locally without a GPU.**
 
-The repository includes the V5 training and validation notebooks, its saved configuration in [`configs/v5_config.json`](configs/v5_config.json), and selected V3–V5 summary CSVs. V3/V4 original training notebooks and larger datasets remain in Drive. Start with evaluation using saved adapters; training and full end-to-end reproduction require access to the team's original data and model files.
+To run a model experiment:
 
-## Data and credits
+1. Choose a version and open its notebook in Google Colab (an A100-class GPU is recommended for 12B QLoRA training).
+2. Mount the team's Google Drive and use the matching files in `IAT/`. The training CSVs are also available under [`datasets/`](datasets/).
+3. Make sure the FairFace images and held-out IAT faces are available at the paths used by the notebook. **The CSVs contain image paths, not the image pixels.**
+4. For evaluation, load the saved LoRA adapter from Drive and run the benchmark cells before deciding whether to retrain.
+5. Compare against the checked-in [results](results/) using the same prompts, decoding settings and held-out inputs.
 
-FairFace and other benchmark data have their own usage terms. We do not publish face-image copies, model weights or credentials here. This work is part of a UC Berkeley URAP research collaboration.
+See the [**V3–V5 reproduction guide**](docs/v3_v5_handoff.md) for paths, training-set sizes, checkpoints, and where to find each output.
+
+## Model files and data access
+
+The small configs and CSVs are committed here. Large LoRA weights and checkpoints remain in the team's Google Drive under `IAT/models/`; each V3–V5 final adapter is about **262 MB**, and normal GitHub files are limited to **100 MiB**. Publishing weights through GitHub would require Git LFS.
+
+FairFace images, the 12 IAT face images and external FER2013 images stay with their original datasets/Drive storage. Ask the research team for the required access and follow each dataset's terms.
+
+## Research notes
+
+The IAT experiment uses **12 held-out images, 61 possible words and 50 generations per image**. We analyze at the **image level** rather than treating repeated generations as independent participants. Compare both the Black–White gap and the overall negative-word rate.
+
+This repo includes the experiment code and recorded outputs. Full GPU training and evaluation have **not been rerun from scratch** during this GitHub reorganization.
+
+**For a new team member:** read this README, run the dataset check, then follow the [V3–V5 guide](docs/v3_v5_handoff.md).
