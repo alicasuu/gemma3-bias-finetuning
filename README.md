@@ -1,75 +1,62 @@
-# Gemma-3 Multimodal Bias Fine-Tuning (UC Berkeley URAP)
+# Gemma-3 Bias Fine-Tuning
 
-Research project evaluating whether parameter-efficient fine-tuning of **google/gemma-3-12b-it** reduces race-associated response disparities **without** degrading response quality, instruction following, or performance on independent benchmarks.
+A UC Berkeley URAP research project studying **whether fine-tuning Gemma-3 changes racial bias in its responses—and whether those changes hold up outside the training benchmark.**
 
-> **Research status (November 2026):** V1–V5 have been explored. This is an experimental research repository, not a validated unbiased model. Improvements on one benchmark do not establish fairness or generalization.
+We use `google/gemma-3-12b-it`, a vision-language model, and compare the original model with five supervised fine-tuning experiments. The main question is simple: **can we reduce biased associations without making the model less useful or just teaching it to avoid certain words?**
 
-## Research question
+## What we did
 
-When a vision-language model sees a face, does it associate different negative or positive words with people in different racial groups? Can supervised fine-tuning with matched examples reduce that gap while retaining useful visual understanding and avoiding stereotypes or unsupported social inferences?
+We started with a small, held-out image-and-word association test (IAT-style): the model sees a face and selects three words. We compare negative-word rates for Black and White faces. Then we check the same models on independent tasks: stereotype-related questions (DecodingTrust), text generation (BOLD), image comparisons and position bias (VisBias), and facial-expression recognition (FER2013).
 
-We compare the original Gemma-3-12B-IT model against successive LoRA/QLoRA adapters, test robustness to prompt wording, and independently evaluate on text and multimodal benchmarks.
-
-## Start here
-
-1. Read **[V3–V5 handoff and source inventory](docs/v3_v5_handoff.md)** to understand each version, available artifacts, and what still needs verification.
-2. Read [training-data design](docs/training_data.md), [external benchmarks](docs/external_benchmarks.md), and [experiment log](docs/experiment_log.md) for earlier experiments.
-3. For existing executable examples, inspect [notebooks](notebooks/) and [scripts](scripts/).
-4. Reproduce a run using the exact version-specific dataset, adapter, prompt, decoding settings, and evaluation script. **Do not treat the V3/V4/V5 source inventory as a fully tested one-command reproduction recipe.** Some version-specific notebooks and environment details still need to be consolidated.
-
-## Experiment timeline
-
-| Version | Main intervention | Intended test |
+| Experiment | What changed | Why |
 | --- | --- | --- |
-| Base | Untuned `google/gemma-3-12b-it` | Reference behavior |
-| V1 | FairFace expression-derived matched-pair SFT | Initial reduction in Black–White IAT negative-word gap |
-| V2 | Valence-controlled SFT targets | Avoid V1's global negative-word shift |
-| **V3** | Multitask training: IAT, stereotype rejection, grounded description, unsupported inference | Generalization beyond the IAT |
-| **V4** | Balanced-response training | Improve response behavior and robustness |
-| **V5** | Optimized fresh-base training with V4-derived design | Reduce global negative valence and assess external retention |
+| **Base** | Original Gemma-3-12B-IT | Establish a reference |
+| **V1** | Matched FairFace images with expression-derived answers | Test a first fine-tuning approach |
+| **V2** | Balanced positive/negative word targets | Avoid pushing all responses toward negative words |
+| **V3** | Mixed IAT, stereotype, description and comparison tasks | See whether improvements transfer to other tasks |
+| **V4** | Rebalanced response types | Improve robustness and useful answers |
+| **V5** | Optimized task mixture, trained from the **fresh base model** | Keep the strengths of earlier versions without stacking V4 weights |
 
-These labels describe the experiment lineage, **not proof of causal improvement**. For version-specific data files and artifacts, see [handoff](docs/v3_v5_handoff.md).
+**Important V5 detail:** V5 reuses some V4 *data design*, but starts from the original Gemma model. It does **not** load the V4 LoRA adapter. Its dataset has 2,523 training rows and 700 development rows; requested task proportions are 60% IAT, 15% DecodingTrust, and 25% comparison tasks. See [V5 configuration](docs/v5_configuration.md).
 
-## Evaluation framework
+## What we learned
 
-- **IAT-style face/word association:** held-out 12-image benchmark, 61-word vocabulary, exactly three selected words. Track Black and White negative-word rates, signed/absolute gap, overall valence, output validity, vocabulary diversity, and sensitivity to prompts. Repeated generations from one image are not independent samples; use image-level inference.
-- **DecodingTrust:** stereotype-related agreement and behavior on held-out topics.
-- **VisBias:** unsupported socioeconomic inferences from image pairs, abstention, and A/B order effects.
-- **BOLD:** toxicity, sentiment, regard, and differences across demographic categories.
-- **FER2013:** independent facial-expression comparison, with attention to evaluation-set independence and methodology.
+Early results show why measuring only the IAT gap is insufficient. V2 reduced that gap, but performance on some other tasks got worse. The later versions were designed to address those trade-offs.
 
-### Key observations and caveats
+The November 3 research presentation reports that V5 reduced the overall negative-word rate in the IAT comparison from **68.9% to 19.5%**, with promising results on some external tests. There are still open questions about BOLD sentiment, differences across groups, and sensitivity to how a question is phrased. Those numbers describe a particular experiment, not a universal fairness score.
 
-The November 3 presentation reports that V5 reduced the overall IAT negative-word rate from **68.9% to 19.5%** in the reported comparison, while retaining low DecodingTrust stereotype agreement and appropriate VisBias abstention. It also reports **92% accuracy** on an independent FER2013 comparison. These are **experiment-specific reported metrics**, not universal model performance. BOLD sentiment decline and Black–White disparities remain concerns; further images, seeds, and prompt-sensitivity analysis are needed. See [presentation](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit).
+[View the research slides](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit).
 
-Earlier V2 experiments improved the IAT gap but worsened some external behaviors, including DecodingTrust stereotype agreement and VisBias order consistency. This motivates multi-benchmark evaluation rather than optimizing a single fairness metric.
+## Where to find things
 
-## Repository map
+| Location | Contents |
+| --- | --- |
+| [`notebooks/`](notebooks/) | Original Base–V2 notebooks already in this repository |
+| [`scripts/`](scripts/) | Data preparation, statistical testing and plotting |
+| [`docs/v3_v5_handoff.md`](docs/v3_v5_handoff.md) | V3–V5 datasets, adapters, outputs and handoff steps |
+| [`docs/v5_configuration.md`](docs/v5_configuration.md) | V5 training mixture, software versions and evaluation settings |
+| [`docs/training_data.md`](docs/training_data.md) | Earlier dataset construction |
+| [`docs/external_benchmarks.md`](docs/external_benchmarks.md) | External benchmark methodology |
+| [`results/`](results/) | Published lightweight metrics |
 
-- `notebooks/`: runnable notebooks already checked into this repository (historically focused on Base–V2).
-- `scripts/`: evaluation, statistics, data preparation and visualization utilities.
-- `docs/`: methodology, experiment history, handoff and limitations.
-- `results/`: lightweight published metrics and summaries.
-- **External Google Drive:** version-specific V3–V5 training/dev CSVs, model adapters/checkpoints, raw results, and V5 follow-up outputs. Consult the [handoff inventory](docs/v3_v5_handoff.md). These files are not automatically present when cloning.
+**The V3–V5 datasets, saved adapters and full output folders are in the team's Google Drive under `IAT/`.** They are catalogued in the handoff document. We keep large weights and face-image datasets outside this public GitHub repository.
 
-## Reproduction principles
+## How to reproduce an experiment
 
-- Preserve original train/dev/test partitions and topic-level held-out splits.
-- Keep the 12 historical IAT evaluation images outside training.
-- Record model revision, adapter checkpoint, Python/package versions, GPU, seeds, generation parameters, prompts, and file hashes for each run.
-- Distinguish training-data-derived labels from human-ground-truth annotations.
-- Report both absolute disparity and global response-rate changes; include confidence intervals and multiplicity corrections where appropriate.
-- Check prompt order and image order; do not interpret refusal, fixed-position choices, or global positivity as successful debiasing.
-- Keep raw image datasets and large adapter weights in access-controlled storage, subject to their licenses and research permissions.
+1. Open [the handoff guide](docs/v3_v5_handoff.md) and choose V3, V4 or V5.
+2. Get that version's **train/dev CSVs** and **saved LoRA adapter** from `IAT/sft_data/` and `IAT/models/` in Drive.
+3. Use the original Gemma-3-12B-IT model and the matching adapter to **evaluate first**, before spending GPU time retraining.
+4. Use the same held-out prompts, image order and generation settings as the original run. For V5, compare against the saved results in `IAT/results/gemma/v5_v4_optimized_freshbase/`.
+5. Compare negative-word rates **and** the Black–White gap, then check DecodingTrust, VisBias, BOLD and FER2013. Check the raw results before drawing conclusions.
 
-## Handoff for Peyton and collaborators
+The original IAT test uses 12 held-out images, 61 possible words and 50 generations per image. Since many generations come from the same image, statistical tests should account for that rather than treating all 600 responses as independent.
 
-See **[docs/v3_v5_handoff.md](docs/v3_v5_handoff.md)** for the source inventory, version-to-dataset mapping, evaluation files, and a practical reproduction checklist. The source materials were located in the project's Google Drive, but this commit does **not** claim that all external notebooks, model artifacts, or datasets have been mirrored or rerun.
+## For new team members
 
-## Ethics, data, and publication
+Start with this README, then [the V3–V5 handoff](docs/v3_v5_handoff.md). The goal is to understand **what changed between versions, where the exact data and model live, and how to check whether a reported improvement is real**.
 
-Race and expression annotations can be noisy, and facial appearance is not evidence of personality, intelligence, income, education, or other social attributes. Do not use this work to infer such traits about real people. The public repository excludes face-image copies, proprietary/permissioned datasets, private Drive paths, Hugging Face tokens, credentials, and large model weights. Review any external CSVs for redistribution permissions before publishing.
+The historical notebooks are in GitHub; the newer experiment artifacts are indexed in Drive. The full V3–V5 runnable notebook collection has not yet been mirrored into this repository, so use the original notebooks with the saved configurations when reproducing those versions.
 
-## Team
+## Data and credits
 
-UC Berkeley URAP research collaboration. Project materials and version history are maintained for research reproducibility and handoff.
+FairFace and other benchmark data have their own usage terms. We do not publish face-image copies, model weights or credentials here. This work is part of a UC Berkeley URAP research collaboration.
