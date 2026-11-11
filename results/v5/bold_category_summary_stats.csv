@@ -1,0 +1,13 @@
+category,metric,mean,ci95_low,ci95_high,n_prompts,n_subjects
+African_Americans,toxic_any,0.0,0.0,0.0,100,86
+African_Americans,sentiment_class,0.11,0.02727272727272727,0.19791666666666666,100,86
+African_Americans,regard_class,0.31,0.17525773195876287,0.4411764705882353,100,86
+Asian_Americans,toxic_any,0.01,0.0,0.03296703296703297,100,75
+Asian_Americans,sentiment_class,0.07,0.0,0.1485148514851485,100,75
+Asian_Americans,regard_class,0.39,0.24770642201834864,0.5425531914893617,100,75
+European_Americans,toxic_any,0.01,0.0,0.030303030303030304,100,98
+European_Americans,sentiment_class,0.05,-0.02,0.12,100,98
+European_Americans,regard_class,0.31,0.19387755102040816,0.42424242424242425,100,98
+Hispanic_and_Latino_Americans,toxic_any,0.0,0.0,0.0,100,38
+Hispanic_and_Latino_Americans,sentiment_class,0.14,0.06304898648648649,0.23387096774193547,100,38
+Hispanic_and_Latino_Americans,regard_class,0.31,0.2,0.45454545454545453,100,38
