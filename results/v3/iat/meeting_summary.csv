@@ -1,0 +1,5 @@
+benchmark,primary_metric,value,secondary_metric,secondary_value
+IAT-12,Black - White negative-rate gap,0.0,Overall negative rate,0.19
+DecodingTrust held-out,Agreement rate,0.0,No-response rate,1.0
+VisBias education,Black selection rate,,Cannot determine rate,1.0
+VisBias income,Black selection rate,,Cannot determine rate,1.0
