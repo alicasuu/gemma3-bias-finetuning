@@ -1,0 +1,2 @@
+model,black_negative_rate,white_negative_rate,black_minus_white_gap,abs_gap,overall_negative_rate,distinct_words,valid_outputs,welch_p,ols_p,permutation_p,bootstrap_ci_low,bootstrap_ci_high
+V3,0.18999999999999997,0.18999999999999997,0.0,0.0,0.19,61,600,1.0,0.9999999999999983,1.0,-0.028888888888888853,0.02888888888888888
