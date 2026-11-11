@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="890" viewBox="0 0 1100 890"><rect width="100%" height="100%" fill="#fff"/>
+<text x="62" y="58" font-family="Arial" font-size="30" font-weight="bold" fill="#172b38">IAT word distribution — V3</text>
+<text x="62" y="84" font-family="Arial" font-size="15" fill="#596974">Top 16 selected words · all 12 held-out faces · 50 generations per image</text>
+<text x="240" y="140" text-anchor="end" font-family="Arial" font-size="17" fill="#314150">Appealing</text>
+<rect x="260" y="120" width="745.0" height="29" rx="4" fill="#2883a8"/>
+<text x="1014" y="141" font-family="Arial" font-size="14" fill="#46545e">84</text>
+<text x="240" y="183" text-anchor="end" font-family="Arial" font-size="17" fill="#314150">Delight</text>
+<rect x="260" y="163" width="629.7" height="29" rx="4" fill="#2883a8"/>
+<text x="898.702380952381" y="184" font-family="Arial" font-size="14" fill="#46545e">71</text>
+<text x="240" y="226" text-anchor="end" font-family="Arial" font-size="17" fill="#314150">Joyous</text>
+<rect x="260" y="206" width="620.8" height="29" rx="4" fill="#2883a8"/>
+<text x="889.8333333333334" y="227" font-family="Arial" font-size="14" fill="#46545e">70</text>
+<text x="240" y="269" text-anchor="end" font-family="Arial" font-size="17" fill="#314150">Excellent</text>
+<rect x="260" y="249" width="603.1" height="29" rx="4" fill="#2883a8"/>
+<text x="872.0952380952381" y="270" font-family="Arial" font-size="14" fill="#46545e">68</text>
+<text x="240" y="312" text-anchor="end" font-family="Arial" font-size="17" fill="#314150">Beautiful</text>
+<rect x="260" y="292" width="576.5" height="29" rx="4" fill="#2883a8"/>
+<text x="845.4880952380952" y="313" font-family="Arial" font-size="14" fill="#46545e">65</text>
+<text x="240" y="355" text-anchor="end" font-family="Arial" font-size="17" fill="#314150">Fantastic</text>
+<rect x="260" y="335" width="558.8" height="29" rx="4" fill="#2883a8"/>
+<text x="827.75" y="356" font-family="Arial" font-size="14" fill="#46545e">63</text>
+<text x="240" y="398" text-anchor="end" font-family="Arial" font-size="17" fill="#314150">Friend</text>
+<rect x="260" y="378" width="549.9" height="29" rx="4" fill="#2883a8"/>
+<text x="818.8809523809524" y="399" font-family="Arial" font-size="14" fill="#46545e">62</text>
+<text x="240" y="441" text-anchor="end" font-family="Arial" font-size="17" fill="#314150">Love</text>
+<rect x="260" y="421" width="532.1" height="29" rx="4" fill="#2883a8"/>
+<text x="801.1428571428571" y="442" font-family="Arial" font-size="14" fill="#46545e">60</text>
+<text x="240" y="484" text-anchor="end" font-family="Arial" font-size="17" fill="#314150">Joyful</text>
+<rect x="260" y="464" width="496.7" height="29" rx="4" fill="#2883a8"/>
+<text x="765.6666666666667" y="485" font-family="Arial" font-size="14" fill="#46545e">56</text>
+<text x="240" y="527" text-anchor="end" font-family="Arial" font-size="17" fill="#314150">Glorious</text>
+<rect x="260" y="507" width="470.1" height="29" rx="4" fill="#2883a8"/>
+<text x="739.0595238095239" y="528" font-family="Arial" font-size="14" fill="#46545e">53</text>
+<text x="240" y="570" text-anchor="end" font-family="Arial" font-size="17" fill="#314150">Laughing</text>
+<rect x="260" y="550" width="461.2" height="29" rx="4" fill="#2883a8"/>
+<text x="730.1904761904761" y="571" font-family="Arial" font-size="14" fill="#46545e">52</text>
+<text x="240" y="613" text-anchor="end" font-family="Arial" font-size="17" fill="#314150">Attractive</text>
+<rect x="260" y="593" width="443.5" height="29" rx="4" fill="#2883a8"/>
+<text x="712.452380952381" y="614" font-family="Arial" font-size="14" fill="#46545e">50</text>
+<text x="240" y="656" text-anchor="end" font-family="Arial" font-size="17" fill="#314150">Magnificent</text>
+<rect x="260" y="636" width="434.6" height="29" rx="4" fill="#2883a8"/>
+<text x="703.5833333333333" y="657" font-family="Arial" font-size="14" fill="#46545e">49</text>
+<text x="240" y="699" text-anchor="end" font-family="Arial" font-size="17" fill="#314150">Glad</text>
+<rect x="260" y="679" width="408.0" height="29" rx="4" fill="#2883a8"/>
+<text x="676.9761904761905" y="700" font-family="Arial" font-size="14" fill="#46545e">46</text>
+<text x="240" y="742" text-anchor="end" font-family="Arial" font-size="17" fill="#314150">Happy</text>
+<rect x="260" y="722" width="399.1" height="29" rx="4" fill="#2883a8"/>
+<text x="668.1071428571429" y="743" font-family="Arial" font-size="14" fill="#46545e">45</text>
+<text x="240" y="785" text-anchor="end" font-family="Arial" font-size="17" fill="#314150">Adore</text>
+<rect x="260" y="765" width="381.4" height="29" rx="4" fill="#2883a8"/>
+<text x="650.3690476190476" y="786" font-family="Arial" font-size="14" fill="#46545e">43</text>
+<text x="60" y="858" font-family="Arial" font-size="13" fill="#62717c">Recreated from archived V3 per-response CSV; original slide contains a related distribution chart.</text>
+</svg>
