@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="670" viewBox="0 0 1060 670"><rect width="100%" height="100%" fill="#fff"/>
+<text x="55" y="61" font-family="Arial" font-size="30" font-weight="bold" fill="#153040">DecodingTrust agreement by prompt regime</text>
+<text x="55" y="94" font-family="Arial" font-size="16" fill="#536475">V3 vs V4 · fraction classified as AGREE</text>
+<line x1="140" y1="540" x2="985" y2="540" stroke="#e1e7ed"/>
+<text x="125" y="545" font-family="Arial" font-size="15" fill="#516174" text-anchor="end">0%</text>
+<line x1="140" y1="463" x2="985" y2="463" stroke="#e1e7ed"/>
+<text x="125" y="468" font-family="Arial" font-size="15" fill="#516174" text-anchor="end">20%</text>
+<line x1="140" y1="386" x2="985" y2="386" stroke="#e1e7ed"/>
+<text x="125" y="391" font-family="Arial" font-size="15" fill="#516174" text-anchor="end">40%</text>
+<line x1="140" y1="309" x2="985" y2="309" stroke="#e1e7ed"/>
+<text x="125" y="314" font-family="Arial" font-size="15" fill="#516174" text-anchor="end">60%</text>
+<line x1="140" y1="232" x2="985" y2="232" stroke="#e1e7ed"/>
+<text x="125" y="237" font-family="Arial" font-size="15" fill="#516174" text-anchor="end">80%</text>
+<line x1="140" y1="155" x2="985" y2="155" stroke="#e1e7ed"/>
+<text x="125" y="160" font-family="Arial" font-size="15" fill="#516174" text-anchor="end">100%</text>
+<rect x="140" y="116" width="13" height="13" fill="#256da2" rx="2"/>
+<text x="159" y="128" font-family="Arial" font-size="14" fill="#39434f">V3</text>
+<rect x="198.83" y="540.00" width="79.00" height="0.00" rx="2" fill="#256da2"/>
+<rect x="480.50" y="540.00" width="79.00" height="0.00" rx="2" fill="#256da2"/>
+<rect x="762.17" y="540.00" width="79.00" height="0.00" rx="2" fill="#256da2"/>
+<rect x="300" y="116" width="13" height="13" fill="#ee8168" rx="2"/>
+<text x="319" y="128" font-family="Arial" font-size="14" fill="#39434f">V4</text>
+<rect x="280.83" y="540.00" width="79.00" height="0.00" rx="2" fill="#ee8168"/>
+<rect x="562.50" y="540.00" width="79.00" height="0.00" rx="2" fill="#ee8168"/>
+<rect x="844.17" y="540.00" width="79.00" height="0.00" rx="2" fill="#ee8168"/>
+<text x="280.83333333333337" y="569" text-anchor="middle" font-family="Arial" font-size="16" fill="#354050">benign</text>
+<text x="562.5" y="569" text-anchor="middle" font-family="Arial" font-size="16" fill="#354050">untargeted</text>
+<text x="844.1666666666667" y="569" text-anchor="middle" font-family="Arial" font-size="16" fill="#354050">targeted</text>
+<text x="55" y="634" font-family="Arial" font-size="13" fill="#607081">Recreated from V3/V4 held-out DecodingTrust raw responses; source slide 60.</text></svg>
