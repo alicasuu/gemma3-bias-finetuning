@@ -1,198 +1,75 @@
-# Gemma-3 Bias Fine-Tuning
+# Gemma-3 Multimodal Bias Fine-Tuning (UC Berkeley URAP)
 
-Research code for evaluating and refining `google/gemma-3-12b-it` on race-associated multimodal and text bias benchmarks.
+Research project evaluating whether parameter-efficient fine-tuning of **google/gemma-3-12b-it** reduces race-associated response disparities **without** degrading response quality, instruction following, or performance on independent benchmarks.
 
-## Current focus
+> **Research status (November 2026):** V1–V5 have been explored. This is an experimental research repository, not a validated unbiased model. Improvements on one benchmark do not establish fairness or generalization.
 
-This project currently focuses on **Gemma-3-12B-IT**.
+## Research question
 
-Experimental sequence:
+When a vision-language model sees a face, does it associate different negative or positive words with people in different racial groups? Can supervised fine-tuning with matched examples reduce that gap while retaining useful visual understanding and avoiding stereotypes or unsupported social inferences?
 
-1. **Baseline** — evaluate the original Gemma-3-12B-IT model.
-2. **SFT v1** — fine-tune with FairFace matched Black/White pairs using expression-derived 3-word targets.
-3. **SFT v2** — keep the same images and QLoRA settings, but control the positive/negative target distribution to test whether the race gap can be reduced without causing a global valence shift.
-4. **IAT statistical testing** — compare image-level Black vs. White negative-word rates using Welch t-tests, OLS, permutation inference, and confidence intervals.
-5. **External validation** — compare the same Base and V2 models on DecodingTrust, BOLD, and VisBias.
-6. **V3 multi-task pilot** — add more diverse debiasing tasks and test whether the IAT improvement generalizes, with DecodingTrust topics held out from training.
+We compare the original Gemma-3-12B-IT model against successive LoRA/QLoRA adapters, test robustness to prompt wording, and independently evaluate on text and multimodal benchmarks.
 
-## Training data
+## Start here
 
-Training uses the **FairFace 4,000 matched release** used by the URAP project.
+1. Read **[V3–V5 handoff and source inventory](docs/v3_v5_handoff.md)** to understand each version, available artifacts, and what still needs verification.
+2. Read [training-data design](docs/training_data.md), [external benchmarks](docs/external_benchmarks.md), and [experiment log](docs/experiment_log.md) for earlier experiments.
+3. For existing executable examples, inspect [notebooks](notebooks/) and [scripts](scripts/).
+4. Reproduce a run using the exact version-specific dataset, adapter, prompt, decoding settings, and evaluation script. **Do not treat the V3/V4/V5 source inventory as a fully tested one-command reproduction recipe.** Some version-specific notebooks and environment details still need to be consolidated.
 
-The v1 workflow:
-- keeps only complete Black/White matched pairs;
-- keeps high-confidence (`>= 0.80`) `happy`, `sad`, and `angry` expression labels;
-- gives both members of each matched pair the exact same 3-word SFT target;
-- uses the provided **train** split for SFT and **development** split for validation;
-- leaves the FairFace test split untouched;
-- keeps the original **12 IAT evaluation images fully held out** from training.
+## Experiment timeline
 
-Current retained v1 data:
-- **1,514 training images**
-- **516 development images**
+| Version | Main intervention | Intended test |
+| --- | --- | --- |
+| Base | Untuned `google/gemma-3-12b-it` | Reference behavior |
+| V1 | FairFace expression-derived matched-pair SFT | Initial reduction in Black–White IAT negative-word gap |
+| V2 | Valence-controlled SFT targets | Avoid V1's global negative-word shift |
+| **V3** | Multitask training: IAT, stereotype rejection, grounded description, unsupported inference | Generalization beyond the IAT |
+| **V4** | Balanced-response training | Improve response behavior and robustness |
+| **V5** | Optimized fresh-base training with V4-derived design | Reduce global negative valence and assess external retention |
 
-FairFace does not provide source-authored 3-word SFT answers. V1 targets are an experimental construction from the provided expression metadata, not human-verified emotion labels.
+These labels describe the experiment lineage, **not proof of causal improvement**. For version-specific data files and artifacts, see [handoff](docs/v3_v5_handoff.md).
 
-See [`docs/training_data.md`](docs/training_data.md).
+## Evaluation framework
 
-## Model and fine-tuning
+- **IAT-style face/word association:** held-out 12-image benchmark, 61-word vocabulary, exactly three selected words. Track Black and White negative-word rates, signed/absolute gap, overall valence, output validity, vocabulary diversity, and sensitivity to prompts. Repeated generations from one image are not independent samples; use image-level inference.
+- **DecodingTrust:** stereotype-related agreement and behavior on held-out topics.
+- **VisBias:** unsupported socioeconomic inferences from image pairs, abstention, and A/B order effects.
+- **BOLD:** toxicity, sentiment, regard, and differences across demographic categories.
+- **FER2013:** independent facial-expression comparison, with attention to evaluation-set independence and methodology.
 
-Base model:
+### Key observations and caveats
 
-```text
-google/gemma-3-12b-it
-```
+The November 3 presentation reports that V5 reduced the overall IAT negative-word rate from **68.9% to 19.5%** in the reported comparison, while retaining low DecodingTrust stereotype agreement and appropriate VisBias abstention. It also reports **92% accuracy** on an independent FER2013 comparison. These are **experiment-specific reported metrics**, not universal model performance. BOLD sentiment decline and Black–White disparities remain concerns; further images, seeds, and prompt-sensitivity analysis are needed. See [presentation](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit).
 
-Current QLoRA configuration:
+Earlier V2 experiments improved the IAT gap but worsened some external behaviors, including DecodingTrust stereotype agreement and VisBias order consistency. This motivates multi-benchmark evaluation rather than optimizing a single fairness metric.
 
-| Setting | Value |
-|---|---:|
-| Quantization | 4-bit NF4 |
-| LoRA rank | 16 |
-| LoRA alpha | 32 |
-| LoRA dropout | 0.05 |
-| Learning rate | 2e-4 |
-| Epochs | 1 |
-| Train batch size | 1 |
-| Gradient accumulation | 8 |
-| Precision | BF16 |
-| Optimizer | adamw_torch_fused |
+## Repository map
 
-LoRA targets:
-`q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj`.
+- `notebooks/`: runnable notebooks already checked into this repository (historically focused on Base–V2).
+- `scripts/`: evaluation, statistics, data preparation and visualization utilities.
+- `docs/`: methodology, experiment history, handoff and limitations.
+- `results/`: lightweight published metrics and summaries.
+- **External Google Drive:** version-specific V3–V5 training/dev CSVs, model adapters/checkpoints, raw results, and V5 follow-up outputs. Consult the [handoff inventory](docs/v3_v5_handoff.md). These files are not automatically present when cloning.
 
-Training loss is applied only to the assistant's 3-word answer tokens; prompt and image tokens are masked.
+## Reproduction principles
 
-## IAT-12 evaluation
+- Preserve original train/dev/test partitions and topic-level held-out splits.
+- Keep the 12 historical IAT evaluation images outside training.
+- Record model revision, adapter checkpoint, Python/package versions, GPU, seeds, generation parameters, prompts, and file hashes for each run.
+- Distinguish training-data-derived labels from human-ground-truth annotations.
+- Report both absolute disparity and global response-rate changes; include confidence intervals and multiplicity corrections where appropriate.
+- Check prompt order and image order; do not interpret refusal, fixed-position choices, or global positivity as successful debiasing.
+- Keep raw image datasets and large adapter weights in access-controlled storage, subject to their licenses and research permissions.
 
-Held-out IAT-style benchmark:
+## Handoff for Peyton and collaborators
 
-- **12 images**
-- **61-word vocabulary**
-- exactly **3 output words**
-- **50 generations per image**
-- **600 generations total**
-- temperature = **1.0**
+See **[docs/v3_v5_handoff.md](docs/v3_v5_handoff.md)** for the source inventory, version-to-dataset mapping, evaluation files, and a practical reproduction checklist. The source materials were located in the project's Google Drive, but this commit does **not** claim that all external notebooks, model artifacts, or datasets have been mirrored or rerun.
 
-The 12 benchmark images are never used for fine-tuning.
+## Ethics, data, and publication
 
-Observed Black − White negative-rate gaps:
-- Baseline: ~33.2 percentage points
-- V1: ~-5.7 percentage points
-- V2: ~1.1 percentage points
+Race and expression annotations can be noisy, and facial appearance is not evidence of personality, intelligence, income, education, or other social attributes. Do not use this work to infer such traits about real people. The public repository excludes face-image copies, proprietary/permissioned datasets, private Drive paths, Hugging Face tokens, credentials, and large model weights. Review any external CSVs for redistribution permissions before publishing.
 
-V2 strongly reduced the original IAT gap without reproducing V1's large global negative shift.
+## Team
 
-## External benchmark validation
-
-The same Base model and saved V2 LoRA adapter were evaluated on three external benchmarks.
-
-### DecodingTrust
-
-- 192 race-focused stereotype prompts/model
-- Base overall stereotype agreement: **7.3%**
-- V2 overall stereotype agreement: **54.7%**
-- overall four-group disparity change p = **0.922**
-
-V2 answered more often but agreed with stereotype statements much more often.
-
-### BOLD
-
-- 400 race-focused prompts/model
-- toxicity: **0.75% -> 0.25%**
-- mean sentiment: **0.1675 -> 0.2250**
-- mean regard: **0.3775 -> 0.4275**
-- no statistically detectable race-category disparity change on toxicity, sentiment, or regard
-
-### VisBias
-
-- 140 strict matched Black/White image pairs
-- income + education comparisons
-- reversed A/B image order
-- 560 comparison calls/model
-
-V2 produced 50/50 aggregate Black/White selection on both attributes, but **order consistency fell to 0%**, indicating strong position sensitivity rather than robust debiasing.
-
-See [`docs/external_benchmarks.md`](docs/external_benchmarks.md).
-
-## Current next experiment: V3 diverse-task supervision
-
-The next pilot tests whether broader supervision improves cross-benchmark robustness.
-
-Planned task mixture:
-- IAT-style valence-controlled image association
-- DecodingTrust-style stereotype rejection
-- grounded neutral image description
-- unsupported social-inference comparison with both A/B orders
-
-DecodingTrust text supervision uses a deterministic **topic-level holdout** so final evaluation topics are not used for training.
-
-See [`docs/v3_multitask_training_plan.md`](docs/v3_multitask_training_plan.md).
-
-For the VisBias follow-up, the repository now includes:
-- [`results/metrics/visbias_order_effect_summary.csv`](results/metrics/visbias_order_effect_summary.csv)
-- [`scripts/plot_visbias_order_effect.py`](scripts/plot_visbias_order_effect.py)
-
-## Main conclusion
-
-V2 substantially improves the original IAT gap, but the debiasing effect does **not** generalize uniformly across external benchmarks and can introduce behavioral trade-offs.
-
-## Metrics and statistical unit
-
-For IAT we report:
-- Black negative-word rate
-- White negative-word rate
-- Black − White negative-rate gap
-- absolute Black/White gap
-- overall negative-word rate
-- Jensen–Shannon divergence
-- vocabulary diversity
-- valid output count
-- image-level Welch t-test
-- OLS race coefficient with robust inference
-- exact permutation/randomization p-value
-- bootstrap 95% confidence interval
-
-The 600 IAT generations are repeated outputs from only 12 images, so they are **not** treated as 600 independent samples. Statistical tests use the **image** as the primary unit.
-
-External benchmark notebooks additionally preserve matched prompts/images and directly test Base-to-V2 changes when possible.
-
-## Repository structure
-
-```text
-gemma3-bias-finetuning/
-├── README.md
-├── requirements.txt
-├── .gitignore
-├── docs/
-│   ├── training_data.md
-│   ├── experiment_log.md
-│   ├── external_benchmarks.md
-│   ├── v3_multitask_training_plan.md
-│   └── slide_source_index.md
-├── scripts/
-│   ├── statistical_testing.py
-│   ├── v2_targets.py
-│   ├── plot_visbias_order_effect.py
-│   └── build_v3_decodingtrust_supervision.py
-├── notebooks/
-│   ├── 01_gemma3_baseline.ipynb
-│   ├── 02_gemma3_sft_v1_expression.ipynb
-│   ├── 03_gemma3_sft_v2_valence_controlled.ipynb
-│   ├── 04_gemma3_decodingtrust_base_vs_v2.ipynb
-│   ├── 05_gemma3_bold_base_vs_v2.ipynb
-│   └── 06_gemma3_visbias_base_vs_v2.ipynb
-└── results/
-    ├── README.md
-    └── metrics/
-```
-
-## Reproducibility / data policy
-
-This public repository intentionally does **not** contain FairFace images, IAT face images, VisBias image copies, raw model weights, LoRA adapter weights, Hugging Face tokens, or other credentials. Raw generation files are kept out of Git when they are large; lightweight summary metrics and completed notebooks are committed.
-
-## Collaboration
-
-Project code is maintained through GitHub so experiment changes are reviewable and reproducible.
-
-Debbie's GitHub handle: `Debbieliang9`.
+UC Berkeley URAP research collaboration. Project materials and version history are maintained for research reproducibility and handoff.
