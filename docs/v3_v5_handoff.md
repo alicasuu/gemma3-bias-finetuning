@@ -1,72 +1,77 @@
-# V3–V5 experiment handoff and source inventory
+# V3–V5: How to reproduce the experiments
 
-**Updated:** November 2026  
-**Purpose:** Help Peyton and future researchers locate, understand, and reproduce the Gemma-3-12B-IT debiasing experiments.  
-**Status:** Source files have been located in the project Google Drive. This document is an **inventory and reproduction plan**, not a claim that all files are published to GitHub or that each run has been rerun.
+This page is a handoff for anyone continuing the UC Berkeley URAP Gemma-3 project. **All V1–V5 train/dev CSVs, the original V3/V4/V5 Colab notebooks, and the saved evaluation CSVs are now in this repository.** The trained LoRA weights and image files remain in the project's Google Drive because they are large or subject to dataset usage terms.
 
-## 1. What is being tested?
+## Pick a version
 
-We test whether LoRA/QLoRA fine-tuning changes race-associated word selection and whether those changes hold up under different prompt wordings and independent benchmarks. A lower IAT gap alone can be misleading: it may come from globally avoiding negative words, invalid outputs, or order/prompt sensitivity. Therefore every version should be evaluated for **bias gap, overall valence, validity, and external-task retention**.
+| Version | Notebook | Train CSV | Dev CSV | Saved adapter in Google Drive |
+| --- | --- | --- | --- | --- |
+| **V3** | [V3_MULTITASK_COMPLETE](../notebooks/v3/V3_MULTITASK_COMPLETE.ipynb) | [V3 train](../datasets/v3/train.csv) | [V3 dev](../datasets/v3/dev_iat.csv) | `IAT/models/gemma3-12b-fairface-sft-lora-v3-multitask/` |
+| **V4** | [V4_MULTITASK_BALANCED_RESPONSE](../notebooks/v4/V4_MULTITASK_BALANCED_RESPONSE.ipynb) | [V4 train](../datasets/v4/train.csv) | [V4 dev](../datasets/v4/dev_iat.csv) | `IAT/models/gemma3-12b-fairface-sft-lora-v4-balanced-response/` |
+| **V5** | [V5 optimized fresh-base](../notebooks/v5/V5_Optimized_FreshBase_Colab.ipynb) | [V5 train](../datasets/v5/train.csv) | [V5 dev](../datasets/v5/dev.csv) | `IAT/models/gemma3-12b-v5-v4-optimized-freshbase/` |
 
-## 2. Version lineage and canonical data
+The notebooks use original Colab/Drive paths, which may need to be adjusted for a new account or runtime. Open them **one at a time**. They are archived as originally authored, except that saved execution outputs were cleared before upload.
 
-| Version | Training data | Dev data | Design |
-| --- | --- | --- | --- |
-| V3 | `sft_data/v3_multitask/train_v3_multitask.csv` | `sft_data/v3_multitask/dev_v3_iat_only.csv` | Multitask SFT, including IAT-style supervision and held-out DecodingTrust topics |
-| V4 | `sft_data/v4_balanced_response/train_v4_balanced_response.csv` | `sft_data/v4_balanced_response/dev_v4_iat_only.csv` | Balanced-response SFT |
-| V5 | `sft_data/v5_v4_optimized_freshbase/train_v5.csv` | `sft_data/v5_v4_optimized_freshbase/dev_v5.csv` | Optimized fresh-base run; see adjacent `config.json` |
+**V5 starts from the original Gemma-3-12B-IT weights.** It uses V4-informed training data but **does not continue training the V4 adapter**. Check [V5's recorded configuration](v5_configuration.md) and [the saved JSON](../configs/v5_config.json).
 
-The relative paths above refer to the **Google Drive `IAT` folder**, not this GitHub repository. The V3 and V4 data folders also contain `decodingtrust_train_topics.csv` and `decodingtrust_heldout_topics.csv`; V5 has `decodingtrust_heldout_topics_REFERENCE_ONLY.csv`. Do not accidentally use held-out topics for training.
+## Dataset sizes
 
-V1 and V2 training/dev CSVs also exist in `sft_data/`; consult them when documenting how supervision evolved across all five versions.
+| Version | Training rows | Development rows | IAT train | Comparison train | DecodingTrust train |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| V1 | 1,514 | 516 | — | — | — |
+| V2 | 1,514 | 516 | — | — | — |
+| V3 | 3,028 | 516 | 1,514 | 757 | 757 |
+| V4 | 3,364 | 516 | 1,514 | 1,177 | 673 |
+| V5 | 2,523 | 700 | 1,514 | 632 | 377 |
 
-## 3. Located model artifacts
+V1 and V2 use a different file schema, so the task columns above only apply to V3 onward.
 
-Under `IAT/models/`:
+V3/V4 have separate [DecodingTrust train/held-out topic lists](../datasets/v3/); V5 has a [reference-only held-out list](../datasets/v5/decodingtrust_heldout_topics_REFERENCE_ONLY.csv). The checked topic labels in the V3/V4/V5 training CSVs have **no overlap** with their respective held-out topic lists.
 
-- `gemma3-12b-fairface-sft-lora-v3-multitask/` and `...-checkpoints/`
-- `gemma3-12b-fairface-sft-lora-v4-balanced-response/` and `...-checkpoints/`
-- `gemma3-12b-v5-v4-optimized-freshbase/` and `...-checkpoints/`
-- Earlier V1/V2 adapters and `gemma_dpo_sweeps/` are available for historical comparisons.
+## Where to find the evaluations
 
-These model directories are **not committed to this public repository**. Verify access, adapter configuration, and checkpoint selection with the team before reproduction.
+| Version | IAT | DecodingTrust | VisBias | BOLD |
+| --- | --- | --- | --- | --- |
+| Base / V2 | [historical IAT](../results/historical/iat/) | [Base + V2 results](../results/historical/decodingtrust/) | [Base + V2 results](../results/historical/visbias/) | [Base + V2 results](../results/historical/bold/) |
+| V3 | [IAT](../results/v3/iat/) | [held-out DT](../results/v3/decodingtrust/) | [image-order comparisons](../results/v3/) | Separate output not found |
+| V4 | [IAT](../results/v4/iat/) | [held-out DT](../results/v4/decodingtrust/) | [image-order comparisons](../results/v4/) | Separate output not found |
+| V5 | [IAT](../results/v5/iat_4prompts_raw.csv) | [DT](../results/v5/decodingtrust_heldout_raw.csv) | [VisBias](../results/v5/visbias_frozen_raw.csv) | [BOLD](../results/v5/bold_frozen_raw.csv) |
 
-## 4. Located evaluation outputs
+V5 also includes [FER2013 evaluation](../results/v5/fer2013_external_test_summary.csv). See the complete [evaluation-and-figures index](evaluation_coverage.md) for paired tests, p-values, and all plots.
 
-- **V3:** `results/gemma/v3_multitask/v3_raw_responses.csv`, `comparison_summary.csv`, `order_consistency.csv`.
-- **V4:** `results/gemma/gemma3_v4_balanced_response/v4_raw_responses.csv`, `comparison_summary.csv`, `order_consistency.csv`.
-- **V5 follow-up:** `results/gemma/v5_v4_optimized_freshbase/` contains `training_log.csv`, `iat_4prompts_raw.csv`, `iat_4prompts_summary_stats.csv`, `iat_paired_changes_and_significance.csv`, `iat_prompts_holm_adjusted_p.csv`, `decodingtrust_heldout_raw.csv`, `decodingtrust_heldout_summary_stats.csv`, `visbias_frozen_raw.csv`, `visbias_frozen_summary_stats.csv`, `bold_frozen_raw.csv`, `bold_scored.csv`, `bold_category_summary_stats.csv`, `fer2013_test_comparison_raw.csv`, `fer2013_external_test_summary.csv`, and `manifest.json` / `v5_followup_outputs_manifest.json`.
+The November 3 presentation reports a reduction in V5's overall IAT negative-word rate from 68.9% to 19.5% and external FER2013 accuracy of 92% in the presented comparison. Results should always be interpreted alongside model validity, prompt sensitivity, global word valence, BOLD sentiment and Black–White differences.
 
-**Note:** The path components are based on folder names observed in Drive; verify the exact nested path before using them in code. Some similarly named V5 output folders exist.
+## First run: check the repository
 
-## 5. Reproduction workflow for Peyton
+```bash
+git clone https://github.com/alicasuu/gemma3-bias-finetuning.git
+cd gemma3-bias-finetuning
+python scripts/check_reproducibility.py
+```
 
-1. **Select the experiment version.** Record V3/V4/V5, base model `google/gemma-3-12b-it`, and the exact adapter/checkpoint.
-2. **Inspect the training data.** Verify schema, row counts, data provenance, train/dev split, and any reference-only or held-out topics. Record file SHA-256.
-3. **Recreate the environment.** Confirm the original training notebook/script, Python/CUDA/PyTorch/Transformers/PEFT/bitsandbytes versions, GPU type, quantization and LoRA settings, optimizer, learning rate, batch/accumulation, epochs, and random seeds. **These settings have not all been independently verified for V3–V5.**
-4. **Start with evaluation-only reproduction** using a saved adapter; do not retrain merely to reproduce a published result.
-5. **Match the original prompts and generation settings** (temperature, samples per image, word list, output format, image order, and prompt variant). Peyton's November 3 slides evaluate multiple prompt variants; prompt wording is a major experimental variable.
-6. **Regenerate and compare summary tables.** Check IAT negative-word rate and Black–White gap, output validity, DecodingTrust stereotype agreement, VisBias abstention/order effects, BOLD sentiment/regard, and independent FER2013 results.
-7. **Recompute uncertainty** using appropriate clustering/pairing and multiple-testing correction; document any discrepancies.
-8. **Only then retrain** if the goal is to verify the training pipeline itself. Record a new seed and separate replicated results from original results.
+This **CPU-only** check validates train/dev counts, V3–V5 task mixtures, topic-level held-out separation and the presence of key files. Installing all GPU packages is *not* necessary for this check.
 
-## 6. What the November 3 presentation says
+## Reproduce a saved model result
 
-The URAP presentation reports V5 improved overall IAT negative-word rate from 68.9% to 19.5%, retained low DecodingTrust stereotype agreement and appropriate VisBias abstention, and achieved 92% accuracy on an independent FER2013 comparison. It also flags BOLD sentiment decline, Black–White disparities, prompt sensitivity, and need for more independent images/seeds.
+1. **Choose the version** and download or mount its saved adapter under Google Drive `IAT/models/`. Use `google/gemma-3-12b-it` as the base model.
+2. **Get the images** used in the relevant benchmark. The CSVs provide names and paths, not image pixel data. Image files live in the original licensed datasets or team Drive.
+3. **Open the version-matched evaluation notebook.** For V5, use [this no-retraining validation notebook](../notebooks/08_gemma3_v5_validation.ipynb).
+4. **Match the frozen prompts and generation settings** used in the original run, including image order, output format, sampling parameters, seed and prompt variation.
+5. **Compare raw rows and summary statistics** with the saved results here. IAT uses 12 historical images with 50 generations per image; the image, not each generated word, is the relevant independent unit.
+6. If necessary, run the training notebook using the exact train/dev data and record the environment, selected adapter checkpoint, and seed.
 
-These figures are reported from the presentation and **have not been independently recalculated in this handoff**. Use the raw and summary CSVs to verify denominators, exact comparison, and statistical uncertainty before quoting them in a paper.
+The [model adapter metadata](../configs/adapters/) records V3/V4/V5 LoRA/processor settings. For V5, the original manifest in [results/v5/manifest.json](../results/v5/manifest.json) also records the task mixture and package versions.
 
-Presentation: https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit
+## Figures and presentation
 
-## 7. Remaining work before calling this fully reproducible
+The team's [URAP 2026 slide deck](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit) is the source presentation. We added the eleven exported **V5 charts** from `IAT/URAP_V5_Charts_11-03_Download/` to [results/v5/figures/](../results/v5/figures/), plus separate IAT, DecodingTrust and V4 figures. For the names and topics of each figure, see [evaluation_coverage.md](evaluation_coverage.md).
 
-- Locate and commit **sanitized V3/V4/V5 training and evaluation notebooks/scripts**, or link controlled-access originals.
-- Verify the exact V3/V4/V5 environment lockfiles, seeds, training configurations, and checkpoint IDs.
-- Review training CSVs and raw outputs for redistribution permission and sensitive content; publish approved files only.
-- Add stable artifact hashes and a version-to-checkpoint mapping.
-- Test a fresh runtime evaluation and compare regenerated results with stored summaries.
-- Document the V1→V5 training-data and prompt changes in a single checked table.
+The full presentation also contains other team members' figures; those are not all mirrored into this repo.
 
-## 8. Data policy
+## What still needs a runtime or team access
 
-Do not commit face-image datasets, adapter/model weights, credentials, private access tokens, or files whose licensing has not been checked. Keep heavyweight and access-controlled artifacts in Drive. Repository readers should request approved access from the project team.
+- **Weights and benchmark images:** final adapter files (about 262 MB each), checkpoint folders, FairFace/VisBias/IAT faces and external FER2013 images remain in Drive or their original datasets. Regular GitHub files cannot store a single 262 MB adapter; use Git LFS or the controlled project Drive.
+- **V3/V4 BOLD:** unlike the V2 and V5 runs, no separate V3/V4 BOLD output folder was located in the reviewed Drive source.
+- **End-to-end repeatability:** the code and committed CSVs have been checked for syntax, counts and topic split, but **full GPU training/evaluation has not been rerun during this handoff**. A new researcher should compare their actual outputs against the archived results.
+
+For any third-party images or benchmark datasets, follow the original usage terms before further sharing.
