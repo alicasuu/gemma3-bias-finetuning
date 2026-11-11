@@ -1,0 +1,42 @@
+name: Check datasets and notebooks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate datasets, task mixtures, and held-out topics
+        run: python scripts/check_reproducibility.py
+      - name: Validate notebook format and Python syntax
+        run: |
+          python - <<'PY'
+          import ast
+          import json
+          from pathlib import Path
+
+          checked = 0
+          for file in Path("notebooks").rglob("*.ipynb"):
+              with file.open(encoding="utf-8") as fp:
+                  nb = json.load(fp)
+              assert isinstance(nb.get("cells"), list), file
+              for index, cell in enumerate(nb["cells"]):
+                  if cell.get("cell_type") != "code":
+                      continue
+                  source = "".join(cell.get("source", []))
+                  if any(line.lstrip().startswith(("!", "%", "%%")) for line in source.splitlines()):
+                      continue
+                  try:
+                      ast.parse(source, filename=str(file))
+                  except SyntaxError as exc:
+                      raise SyntaxError(f"{file} cell {index}: {exc}") from exc
+              checked += 1
+          print(f"Validated {checked} notebook files")
+          PY
