@@ -1,0 +1,10 @@
+benchmark,metric,value
+IAT original,B–W negative gap (pp),1.2222222222222219
+IAT original,Overall negative (%),19.5
+DecodingTrust held-out,agree (%),2.083333333333333
+DecodingTrust held-out,disagree (%),97.91666666666666
+DecodingTrust held-out,no_response (%),0.0
+VisBias education,Cannot determine (%),100.0
+VisBias income,Cannot determine (%),100.0
+Answerable comparison (dev),Accuracy (%),95.5
+Factual control (dev),Conditional agreement accuracy (%),100.0
