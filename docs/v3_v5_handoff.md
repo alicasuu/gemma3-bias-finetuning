@@ -35,8 +35,8 @@ V3/V4 have separate [DecodingTrust train/held-out topic lists](../datasets/v3/);
 | Version | IAT | DecodingTrust | VisBias | BOLD |
 | --- | --- | --- | --- | --- |
 | Base / V2 | [historical IAT](../results/historical/iat/) | [Base + V2 results](../results/historical/decodingtrust/) | [Base + V2 results](../results/historical/visbias/) | [Base + V2 results](../results/historical/bold/) |
-| V3 | [IAT](../results/v3/iat/) | [held-out DT](../results/v3/decodingtrust/) | [image-order comparisons](../results/v3/) | Separate output not found |
-| V4 | [IAT](../results/v4/iat/) | [held-out DT](../results/v4/decodingtrust/) | [image-order comparisons](../results/v4/) | Separate output not found |
+| V3 | [IAT](../results/v3/iat/) | [held-out DT](../results/v3/decodingtrust/) | [image-order comparisons](../results/v3/) | Not run |
+| V4 | [IAT](../results/v4/iat/) | [held-out DT](../results/v4/decodingtrust/) | [image-order comparisons](../results/v4/) | Not run |
 | V5 | [IAT](../results/v5/iat_4prompts_raw.csv) | [DT](../results/v5/decodingtrust_heldout_raw.csv) | [VisBias](../results/v5/visbias_frozen_raw.csv) | [BOLD](../results/v5/bold_frozen_raw.csv) |
 
 V5 also includes [FER2013 evaluation](../results/v5/fer2013_external_test_summary.csv). See the complete [evaluation-and-figures index](evaluation_coverage.md) for paired tests, p-values, and all plots.
@@ -68,7 +68,7 @@ The [model adapter metadata](../configs/adapters/) records V3/V4/V5 LoRA/process
 
 The team's [URAP 2026 slide deck](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit) is the source presentation. We added the eleven exported **V5 charts** from `IAT/URAP_V5_Charts_11-03_Download/` to [results/v5/figures/](../results/v5/figures/), plus separate IAT, DecodingTrust and V4 figures. For the names and topics of each figure, see [evaluation_coverage.md](evaluation_coverage.md).
 
-The full presentation also contains other team members' figures; those are not all mirrored into this repo.
+The full presentation also contains other team members' figures; those are not all mirrored into this repo. See the [Alica slide-and-figure index](alica_slide_figures.md) for all 48 pages labeled with her name. V3/V4 BOLD runs were not performed; BOLD coverage is Base/V2 and V5.
 
 ## What still needs a runtime or team access
 
