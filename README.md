@@ -1,5 +1,7 @@
 # Gemma-3 Bias Fine-Tuning
 
+**Project description:** Reproducible Gemma-3-12B bias fine-tuning research with LoRA/QLoRA, V1–V5 experiments, and cross-benchmark fairness evaluation.
+
 **Can we make a vision-language model less biased without making it worse at other tasks?**
 
 This UC Berkeley URAP project studies that question using **Gemma-3-12B-IT**. We fine-tuned the model with LoRA/QLoRA, compared five training approaches, and tested whether changes carried over to new prompts and benchmarks.
