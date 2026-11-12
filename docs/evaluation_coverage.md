@@ -17,7 +17,7 @@ The V5 [validation notebook](../notebooks/08_gemma3_v5_validation.ipynb) include
 
 ## Figures
 
-See [the updated 446-page audit and index of Alica's 48 slides](alica_slide_figures.md) for the matching source slide and its original or recreated figure. The original 34-image Alica archive is independently browseable in [GitHub](../results/slides/alica_original/). The Google Drive project also contains a folder `IAT/URAP_V5_Charts_11-03_Download/`. We imported its **11 exported slide images** and the separate **V5 IAT word-distribution plot**:
+See [the updated 453-page audit and index of Alica's 52 slides](alica_slide_figures.md) for the matching source slide and its original or recreated figure. The original 34-image Alica archive is independently browseable in [GitHub](../results/slides/alica_original/). The Google Drive project also contains a folder `IAT/URAP_V5_Charts_11-03_Download/`. We imported its **11 exported slide images** and the separate **V5 IAT word-distribution plot**:
 
 The exported V5 charts are listed in the order saved in Drive:
 
@@ -54,4 +54,4 @@ When reporting results, compare the exact same benchmark inputs and scoring prot
 
 ## Exact prompt wording for the V5 Holm-corrected IAT slide
 
-The full ordered 61-word list and literal Original, Paraphrased, Image-grounded, and Format-focused prompt strings are preserved in [V5 IAT exact prompts](v5_iat_prompt_variants.md). They were verified against the `IAT_PROMPTS` dictionary in the archived V5 notebook and included in slide 17 speaker notes.
+The full ordered 61-word list and literal Original, Paraphrased, Image-grounded, and Format-focused prompt strings are preserved in [V5 IAT exact prompts](v5_iat_prompt_variants.md). They were verified against the `IAT_PROMPTS` dictionary in the archived V5 notebook and included in current slide 24 speaker notes.
