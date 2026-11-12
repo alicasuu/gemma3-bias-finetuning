@@ -1,23 +1,23 @@
 # Meeting-slide source index
 
-This file maps the current **URAP 2026** meeting-slide pages to the exact GitHub notebook and lightweight result file behind each figure/table.
+This file preserves the September 16, 2026 source-notebook mapping, now using the **current 446-page deck numbering** as of November 11, 2026. For all 48 Alica-owned pages (including the November 3 V5 results), use [the comprehensive Alica slide-to-figure index](alica_slide_figures.md). All 34 PNGs embedded on Alica's slides are available byte-for-byte in [results/slides/alica_original](../results/slides/alica_original/) with checksums.
 
-## Current Alica update slides
+## September 16 Alica slides — current page numbers
 
-| Meeting slide page | Slide item | GitHub source notebook / doc | Result / metric file | Notes |
+| Current slide page | Slide item | GitHub source notebook / doc | Result / metric file | Notes |
 |---:|---|---|---|---|
-| 3 | Baseline vs SFT V1 + LoRA vs SFT V2 + LoRA plots (regenerated) | `notebooks/01_gemma3_baseline.ipynb`, `notebooks/02_gemma3_sft_v1_expression.ipynb`, `notebooks/03_gemma3_sft_v2_valence_controlled.ipynb` | `results/metrics/gemma3_baseline_v1_v2_metrics.csv` | Same plotting template |
-| 4 | IAT Black/White statistical significance tests | `notebooks/03_gemma3_sft_v2_valence_controlled.ipynb`; `scripts/statistical_testing.py` | `results/metrics/gemma3_baseline_v1_v2_image_level_stats.csv` | Should report difference-in-means / OLS plus permutation/randomization; image is the unit |
-| 5 | DecodingTrust Base vs V2 figure | `notebooks/04_gemma3_decodingtrust_base_vs_v2.ipynb` | `results/metrics/decodingtrust_base_vs_v2_summary.csv` | Four demographic groups |
-| 6 | DecodingTrust statistical significance | `notebooks/04_gemma3_decodingtrust_base_vs_v2.ipynb` | `results/metrics/decodingtrust_direct_change.csv` | Paired tuning-induced disparity change; notebook also contains Black-vs-White t-test / OLS |
-| 7 | BOLD Toxicity | `notebooks/05_gemma3_bold_base_vs_v2.ipynb` | `results/metrics/bold_base_vs_v2_summary.csv` | Race-category toxicity |
-| 8 | BOLD Sentiment | `notebooks/05_gemma3_bold_base_vs_v2.ipynb` | `results/metrics/bold_base_vs_v2_summary.csv` | Race-category sentiment |
-| 9 | BOLD Regard | `notebooks/05_gemma3_bold_base_vs_v2.ipynb` | `results/metrics/bold_base_vs_v2_summary.csv` | Race-category regard |
-| 10 | BOLD within-model African American vs European American tests | `notebooks/05_gemma3_bold_base_vs_v2.ipynb` | notebook output | Welch tests within Base and V2 |
-| 11 | BOLD tuning-induced gap-change tests | `notebooks/05_gemma3_bold_base_vs_v2.ipynb` | `results/metrics/bold_direct_change.csv` | OLS interaction / direct Base-to-V2 change |
-| 12 | VisBias Income | `notebooks/06_gemma3_visbias_base_vs_v2.ipynb` | `results/metrics/visbias_base_vs_v2_summary.csv` | 140 strict matched Black/White pairs; reversed order |
-| 13 | VisBias Education | `notebooks/06_gemma3_visbias_base_vs_v2.ipynb` | `results/metrics/visbias_base_vs_v2_summary.csv` | 140 strict matched Black/White pairs; reversed order |
-| 14 | VisBias statistical significance | `notebooks/06_gemma3_visbias_base_vs_v2.ipynb` | `results/metrics/visbias_direct_change.csv` | Paired permutation + OLS; report order consistency separately |
+| 79–81 | Baseline vs SFT V1 + LoRA vs SFT V2 + LoRA plots (regenerated) | `notebooks/01_gemma3_baseline.ipynb`, `notebooks/02_gemma3_sft_v1_expression.ipynb`, `notebooks/03_gemma3_sft_v2_valence_controlled.ipynb` | `results/metrics/gemma3_baseline_v1_v2_metrics.csv` | Same plotting template |
+| 82 | IAT Black/White statistical significance tests | `notebooks/03_gemma3_sft_v2_valence_controlled.ipynb`; `scripts/statistical_testing.py` | `results/metrics/gemma3_baseline_v1_v2_image_level_stats.csv` | Should report difference-in-means / OLS plus permutation/randomization; image is the unit |
+| 83 | DecodingTrust Base vs V2 figure | `notebooks/04_gemma3_decodingtrust_base_vs_v2.ipynb` | `results/metrics/decodingtrust_base_vs_v2_summary.csv` | Four demographic groups |
+| 84 | DecodingTrust statistical significance | `notebooks/04_gemma3_decodingtrust_base_vs_v2.ipynb` | `results/metrics/decodingtrust_direct_change.csv` | Paired tuning-induced disparity change; notebook also contains Black-vs-White t-test / OLS |
+| 85 | BOLD Toxicity | `notebooks/05_gemma3_bold_base_vs_v2.ipynb` | `results/metrics/bold_base_vs_v2_summary.csv` | Race-category toxicity |
+| 86 | BOLD Sentiment | `notebooks/05_gemma3_bold_base_vs_v2.ipynb` | `results/metrics/bold_base_vs_v2_summary.csv` | Race-category sentiment |
+| 87 | BOLD Regard | `notebooks/05_gemma3_bold_base_vs_v2.ipynb` | `results/metrics/bold_base_vs_v2_summary.csv` | Race-category regard |
+| 88 | BOLD within-model African American vs European American tests | `notebooks/05_gemma3_bold_base_vs_v2.ipynb` | notebook output | Welch tests within Base and V2 |
+| 89 | BOLD tuning-induced gap-change tests | `notebooks/05_gemma3_bold_base_vs_v2.ipynb` | `results/metrics/bold_direct_change.csv` | OLS interaction / direct Base-to-V2 change |
+| 90 | VisBias Income | `notebooks/06_gemma3_visbias_base_vs_v2.ipynb` | `results/metrics/visbias_base_vs_v2_summary.csv` | 140 strict matched Black/White pairs; reversed order |
+| 91 | VisBias Education | `notebooks/06_gemma3_visbias_base_vs_v2.ipynb` | `results/metrics/visbias_base_vs_v2_summary.csv` | 140 strict matched Black/White pairs; reversed order |
+| 92 | VisBias statistical significance | `notebooks/06_gemma3_visbias_base_vs_v2.ipynb` | `results/metrics/visbias_direct_change.csv` | Paired permutation + OLS; report order consistency separately |
 
 ## Cross-benchmark summary
 
@@ -49,3 +49,7 @@ For the summary slide:
 `Source: docs/external_benchmarks.md; results/metrics/cross_benchmark_summary.csv`
 
 Keep the plotting grammar consistent where the metric allows: wide figure, Base in blue, V2 in orange, consistent labels.
+
+## Verified exact original images and prompt text
+
+Use [Alica's complete 48-slide index](alica_slide_figures.md) for source-slide IDs, **all 34 original PNGs** (including both figures on slide 176), historic results and earlier derived SVGs. The files in [the original images directory](../results/slides/alica_original/) are the exact slide-embedded bytes, with a [SHA-256 manifest](../results/slides/alica_original/manifest.csv). The [four exact V5 IAT prompt templates](v5_iat_prompt_variants.md) are also preserved in the November 3 significance slide's speaker notes. **V3/V4 ran IAT, DecodingTrust and VisBias, not BOLD.**
