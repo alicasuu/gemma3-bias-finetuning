@@ -68,16 +68,20 @@ The [model adapter metadata](../configs/adapters/) records V3/V4/V5 LoRA/process
 
 The team's [URAP 2026 slide deck](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit) is the source presentation. We added the eleven exported **V5 charts** from `IAT/URAP_V5_Charts_11-03_Download/` to [results/v5/figures/](../results/v5/figures/), plus separate IAT, DecodingTrust and V4 figures. For the names and topics of each figure, see [evaluation_coverage.md](evaluation_coverage.md).
 
-All 34 PNGs embedded on the 48 Alica-owned slides are individually committed in [original images](../results/slides/alica_original/), with checksums in the [manifest](../results/slides/alica_original/manifest.csv). The full presentation also contains other team members' figures; those are not all mirrored into this repo. See the [Alica slide-and-figure index](alica_slide_figures.md) for all 48 pages labeled with her name across the 446-page deck. V3/V4 BOLD runs were not performed; BOLD coverage is Base/V2 and V5.
+All 34 archived research-era PNGs from the previous 446-page version of the Alica slides are individually committed in [original images](../results/slides/alica_original/), with checksums in the [manifest](../results/slides/alica_original/manifest.csv). The full presentation also contains other team members' figures; those are not all mirrored into this repo. See the [Alica slide-and-figure index](alica_slide_figures.md) for all 52 pages labeled with her name across the 453-page deck. V3/V4 BOLD runs were not performed; BOLD coverage is Base/V2 and V5.
 
 ## What still needs a runtime or team access
 
 - **Weights and benchmark images:** final adapter files (about 262 MB each), checkpoint folders, FairFace/VisBias/IAT faces and external FER2013 images remain in Drive or their original datasets. Regular GitHub files cannot store a single 262 MB adapter; use Git LFS or the controlled project Drive.
 - **V3/V4 BOLD:** these versions were not evaluated on BOLD. Their external benchmarks were DecodingTrust and VisBias, alongside IAT.
-- **End-to-end repeatability:** the code and committed CSVs have been checked for syntax, counts and topic split, but **full GPU training/evaluation has not been rerun during this handoff**. A new researcher should compare their actual outputs against the archived results.
+- **End-to-end repeatability:** the committed CSVs have been checked for counts and topic split; GitHub Actions notebook JSON validation currently fails on three historical Base/V2 notebooks, but **full GPU training/evaluation has not been rerun during this handoff**. A new researcher should compare their actual outputs against the archived results.
 
 For any third-party images or benchmark datasets, follow the original usage terms before further sharing.
 
+## This week's five-slide handoff
+
+The [November 11 five-slide wrap-up](weekly_wrapup_2026-11-11.md) explains V5 prompt variants and shows where to find README, notebooks, configurations, results, and docs; it also provides short scripts and reproducibility limitations. The deck now has 453 pages. The original 34 research figure filenames retain prior slide numbers from the archived 446-page export.
+
 ## Exact V5 IAT prompt reproduction
 
-For the Holm-corrected four-condition plot on the November 3 Alica slide (current slide 17), reproduce the prompts verbatim using [the four exact prompt templates and ordered word list](v5_iat_prompt_variants.md). The deck's speaker notes for that slide also contain the complete prompts.
+For the Holm-corrected four-condition plot on the November 3 Alica slide (current slide 24), reproduce the prompts verbatim using [the four exact prompt templates and ordered word list](v5_iat_prompt_variants.md). The deck's speaker notes for that slide also contain the complete prompts.
