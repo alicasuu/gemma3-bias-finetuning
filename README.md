@@ -54,6 +54,13 @@ For a quick view of **which versions were actually run on each benchmark and whi
 
 Other intermediate versions are kept in the respective notebook folders so the experiment history is easy to trace.
 
+
+### November 11 wrap-up: where to click during the handoff
+
+The current [five-slide Alica wrap-up](docs/weekly_wrapup_2026-11-11.md) walks through **V5's four exact IAT prompts**, the repository tree, the README, versioned Colab notebooks, and saved results / reproduction documentation. It includes a short speaking script and concrete links for each of the five slides. [Open the shared deck](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit#slide=id.h537b1346fea3f701_0_0).
+
+**Known CI limitation (as checked November 11):** the CPU dataset/split check passes, but GitHub Actions notebook-JSON validation fails on three truncated historical Base/V2 benchmark notebooks (`04_gemma3_decodingtrust_base_vs_v2.ipynb`, `05_gemma3_bold_base_vs_v2.ipynb`, `06_gemma3_visbias_base_vs_v2.ipynb`). Restore their full source notebooks before relying on every archived notebook. V3–V5 entrypoints are separate files; a clean GPU end-to-end rerun has not been verified.
+
 ## Getting started
 
 ```bash
