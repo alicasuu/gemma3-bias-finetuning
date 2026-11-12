@@ -38,6 +38,6 @@ No preface, explanation, quotation marks, or additional tokens.
 
 ## Statistics shown on the November 3 slide
 
-The figure *IAT Statistical Significance Across Prompts* in [slide 17 of the current 446-slide deck](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit#slide=id.h1a723f9539e5e840_0_27) plots the Black–White negative-word-rate gap and interval by variant, with both raw permutation p-values and Holm-corrected p-values. The **12 images** are the independent units, not the 600 repeated generations per condition. Repeated generations measure response variation within images.
+The figure *IAT Statistical Significance Across Prompts* in [slide 24 of the current 453-slide deck](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit#slide=id.h1a723f9539e5e840_0_27) plots the Black–White negative-word-rate gap and interval by variant, with both raw permutation p-values and Holm-corrected p-values. The **12 images** are the independent units, not the 600 repeated generations per condition. Repeated generations measure response variation within images.
 
 **Scope reminder:** V3 and V4 were assessed on IAT, DecodingTrust, and VisBias; **BOLD was not run for V3/V4**. Base/V2 and V5 have separate BOLD outputs.
