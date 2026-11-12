@@ -68,7 +68,7 @@ The [model adapter metadata](../configs/adapters/) records V3/V4/V5 LoRA/process
 
 The team's [URAP 2026 slide deck](https://docs.google.com/presentation/d/1bEsHXiTRT3-JSj83314_HKY6b1U_CG4qQvUqaHernfk/edit) is the source presentation. We added the eleven exported **V5 charts** from `IAT/URAP_V5_Charts_11-03_Download/` to [results/v5/figures/](../results/v5/figures/), plus separate IAT, DecodingTrust and V4 figures. For the names and topics of each figure, see [evaluation_coverage.md](evaluation_coverage.md).
 
-The full presentation also contains other team members' figures; those are not all mirrored into this repo. See the [Alica slide-and-figure index](alica_slide_figures.md) for all 48 pages labeled with her name across the 446-page deck. V3/V4 BOLD runs were not performed; BOLD coverage is Base/V2 and V5.
+All 34 PNGs embedded on the 48 Alica-owned slides are individually committed in [original images](../results/slides/alica_original/), with checksums in the [manifest](../results/slides/alica_original/manifest.csv). The full presentation also contains other team members' figures; those are not all mirrored into this repo. See the [Alica slide-and-figure index](alica_slide_figures.md) for all 48 pages labeled with her name across the 446-page deck. V3/V4 BOLD runs were not performed; BOLD coverage is Base/V2 and V5.
 
 ## What still needs a runtime or team access
 
