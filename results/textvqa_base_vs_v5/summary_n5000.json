@@ -1,0 +1,23 @@
+{
+  "benchmark": "TextVQA v0.5.1 validation",
+  "sample_definition": "all 5,000 questions",
+  "n_questions": 5000,
+  "base_vqa_accuracy_percent": 70.58,
+  "v5_vqa_accuracy_percent": 72.27,
+  "delta_percentage_points": 1.69,
+  "delta_95pct_cluster_bootstrap_ci_pp": [
+    0.8746608487110846,
+    2.509531667986532
+  ],
+  "paired_image_cluster_signflip_two_sided_p": 0.00029997000299970003,
+  "distinct_image_clusters": 3166,
+  "bootstrap_iterations": 5000,
+  "signflip_permutations": 10000,
+  "improved_questions": 404,
+  "worse_questions": 284,
+  "tied_questions": 4312,
+  "statistically_significant_at_0_05": true,
+  "reference_evaluator": "https://raw.githubusercontent.com/facebookresearch/mmf/main/mmf/utils/m4c_evaluators.py",
+  "reference_evaluator_sha256": "e10a99e15c4658f8d0d83a05cc536c835922e701171fce0016718bec021b8c0a",
+  "important_note": "Pilot results are not full-validation benchmark results; no test-set score is claimed."
+}

@@ -1,0 +1,17 @@
+{
+  "base_id": "google/gemma-3-12b-it",
+  "adapter_path": "/content/drive/MyDrive/IAT/models/gemma3-12b-v5-v4-optimized-freshbase",
+  "adapter_sha256": "57bc54db0003dde9261629276ccf1d4549b93c8715d776c2bde66e4611790dfe",
+  "annotation_sha256": "4ceb5aadc1a41719d0a3e4dfdf06838bcfee1db569a9a65ee67d31c99893081d",
+  "dataset_version": "TextVQA v0.5.1 validation",
+  "annotation_url": "https://dl.fbaipublicfiles.com/textvqa/data/TextVQA_0.5.1_val.json",
+  "image_url": "https://dl.fbaipublicfiles.com/textvqa/images/train_val_images.zip",
+  "seed": 45,
+  "prompt_prefix": "Answer the question about the image. Respond with only the short answer, without an explanation.\nQuestion: ",
+  "max_new_tokens": 48,
+  "do_sample": false,
+  "quantization": "bitsandbytes 4-bit NF4, double quant, bfloat16 compute",
+  "transformers_version": "5.22.1",
+  "torch_version": "2.14.1+cu130",
+  "peft_version": "0.21.2"
+}
